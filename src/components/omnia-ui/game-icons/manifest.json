@@ -84,5 +84,13 @@
     "trim": false,
     "width": 256,
     "height": 256
+  },
+  {
+    "file": "FieldMap_Hex.g1t.dz",
+    "index": 46,
+    "name": "hex-selected",
+    "trim": false,
+    "width": 256,
+    "height": 256
   }
 ]

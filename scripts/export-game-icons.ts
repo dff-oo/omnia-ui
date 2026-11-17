@@ -29,6 +29,7 @@ const ICONS: { file: string; index: number; name: string; trim?: false }[] = [
   { file: 'FieldMap_Hex.g1t.dz', index: 5, name: 'helmet-green' },
   { file: 'FieldMap_Hex.g1t.dz', index: 13, name: 'hex-grid', trim: false },
   { file: 'FieldMap_Hex.g1t.dz', index: 14, name: 'hex-event', trim: false },
+  { file: 'FieldMap_Hex.g1t.dz', index: 46, name: 'hex-selected', trim: false },
 ];
 
 function repoRoot(): string {

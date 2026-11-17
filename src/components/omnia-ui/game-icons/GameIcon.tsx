@@ -7,6 +7,7 @@ import helmetGreen from "./helmet-green.png";
 import helmetSilver from "./helmet-silver.png";
 import hexEvent from "./hex-event.png";
 import hexGrid from "./hex-grid.png";
+import hexSelected from "./hex-selected.png";
 import move from "./move.png";
 import portal from "./portal.png";
 import start from "./start.png";
@@ -25,11 +26,12 @@ const ICONS = {
   "helmet-green": helmetGreen,
   "hex-grid": hexGrid,
   "hex-event": hexEvent,
+  "hex-selected": hexSelected,
 } satisfies Record<string, StaticImageData>;
 
 /**
- * Where the hex line sits inside the untrimmed 256 by 256 `hex-grid` and `hex-event`
- * textures, measured between corner pixel centres, so a map can fit that box to its cell.
+ * Where the hex line sits inside the untrimmed 256 by 256 `hex-grid`, `hex-event` and
+ * `hex-selected` textures, measured between corner pixel centres, so a map can fit that box to its cell.
  * The game's cell is irregular: the top edge spans 73 px of the 179 px width, and
  * cells tile at 126 px per column (half the width plus half the top edge).
  */
