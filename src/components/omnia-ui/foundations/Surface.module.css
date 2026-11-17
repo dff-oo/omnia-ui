@@ -1,0 +1,177 @@
+.surface {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--omnia-border);
+  border-radius: var(--omnia-radius-md);
+  background: var(--omnia-surface-1);
+  color: var(--omnia-fg);
+}
+
+.plain {
+  box-shadow: none;
+}
+
+.raised {
+  background: var(--omnia-surface-1);
+  box-shadow:
+    inset 0 1px 0 var(--omnia-edge-highlight),
+    var(--omnia-shadow-raised);
+}
+
+.inset {
+  border-color: transparent;
+  background: var(--omnia-surface-2);
+}
+
+/*
+ * Signature: faint blue edge, one upper highlight, mild gradient and faceted corners.
+ * Shape is drawn on pseudo-elements so the outline follows the cut corners.
+ */
+.signature {
+  --_facet: var(--omnia-facet);
+  --_shape: polygon(
+    0 0,
+    calc(100% - var(--_facet)) 0,
+    100% var(--_facet),
+    100% 100%,
+    var(--_facet) 100%,
+    0 calc(100% - var(--_facet))
+  );
+  --_inner-facet: calc(var(--_facet) - 0.5px);
+  --_inner-shape: polygon(
+    0 0,
+    calc(100% - var(--_inner-facet)) 0,
+    100% var(--_inner-facet),
+    100% 100%,
+    var(--_inner-facet) 100%,
+    0 calc(100% - var(--_inner-facet))
+  );
+
+  isolation: isolate;
+  border-color: transparent;
+  border-radius: 0;
+  background: transparent;
+  filter: drop-shadow(0 6px 20px var(--omnia-glow));
+}
+
+.signature::before,
+.signature::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.signature::before {
+  inset: -1px;
+  z-index: -2;
+  background: linear-gradient(
+    160deg,
+    color-mix(in oklab, var(--omnia-accent) 55%, var(--omnia-border)) 0%,
+    var(--omnia-border) 45%,
+    color-mix(in oklab, var(--omnia-accent) 35%, var(--omnia-border)) 100%
+  );
+  clip-path: var(--_shape);
+}
+
+.signature::after {
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to bottom, var(--omnia-edge-highlight), transparent 1.5px),
+    linear-gradient(165deg, var(--omnia-signature-from) 0%, var(--omnia-signature-to) 70%);
+  clip-path: var(--_inner-shape);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .signature {
+    filter: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .signature {
+    border-color: CanvasText;
+    filter: none;
+  }
+
+  .signature::before,
+  .signature::after {
+    display: none;
+  }
+}
+
+/* Spacing */
+.panel {
+  gap: var(--omnia-space-5);
+  padding: var(--omnia-space-6);
+}
+
+.card {
+  gap: var(--omnia-space-3);
+  padding: var(--omnia-space-4);
+}
+
+.compact.panel {
+  gap: var(--omnia-space-4);
+  padding: var(--omnia-space-4);
+}
+
+@media (max-width: 479px) {
+  .panel {
+    padding: var(--omnia-space-4);
+  }
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--omnia-space-3) var(--omnia-space-4);
+}
+
+.headings {
+  display: flex;
+  flex-direction: column;
+  gap: var(--omnia-space-1);
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--omnia-text-lead);
+  font-weight: var(--omnia-weight-semibold);
+}
+
+.card .title {
+  font-size: var(--omnia-text-body);
+}
+
+.description {
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-small);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--omnia-space-2);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--omnia-space-4);
+  min-width: 0;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--omnia-space-3);
+  padding-top: var(--omnia-space-4);
+  border-top: 1px solid var(--omnia-border);
+}

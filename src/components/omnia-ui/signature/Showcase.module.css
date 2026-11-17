@@ -1,0 +1,215 @@
+/* ---------------------------------------------------------------------------
+ * BannerFeature
+ * Narrow: art on top, copy below on a solid surface (no text over busy art).
+ * Wide:   copy overlays a scrimmed area of the art.
+ * ------------------------------------------------------------------------ */
+.bannerWrap {
+  container-type: inline-size;
+}
+
+.banner {
+  --_facet: var(--omnia-facet);
+
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--omnia-accent) 35%, var(--omnia-border));
+  border-radius: var(--omnia-radius-lg);
+  background: var(--omnia-surface-1);
+  color: var(--omnia-fg);
+  box-shadow:
+    inset 0 1px 0 var(--omnia-edge-highlight),
+    var(--omnia-shadow-raised);
+}
+
+.bannerArt {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 0;
+}
+
+.bannerContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--omnia-space-3);
+  padding: var(--omnia-space-5);
+}
+
+.bannerTopline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--omnia-space-2) var(--omnia-space-3);
+}
+
+.bannerEyebrow {
+  color: var(--omnia-accent);
+  font-size: var(--omnia-text-caption);
+  font-weight: var(--omnia-weight-semibold);
+  letter-spacing: var(--omnia-tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.bannerTitle {
+  font-family: var(--omnia-font-display);
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+  font-weight: var(--omnia-weight-semibold);
+  letter-spacing: -0.01em;
+}
+
+.bannerDescription {
+  max-width: 52ch;
+  color: var(--omnia-fg-muted);
+}
+
+.bannerActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--omnia-space-3);
+  margin-top: var(--omnia-space-2);
+}
+
+.bannerAside {
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-small);
+}
+
+@container (min-width: 720px) {
+  .banner {
+    grid-template: 1fr / 1fr;
+    min-height: 380px;
+  }
+
+  .bannerArt {
+    grid-area: 1 / 1;
+    aspect-ratio: auto;
+    height: 100%;
+  }
+
+  .bannerContent {
+    grid-area: 1 / 1;
+    align-self: end;
+    padding: var(--omnia-space-10) var(--omnia-space-8) var(--omnia-space-8);
+    background: var(--omnia-scrim);
+    color: #fff;
+  }
+
+  .bannerContent .bannerEyebrow {
+    color: #cfe4ff;
+  }
+
+  .bannerContent .bannerDescription,
+  .bannerContent .bannerAside {
+    color: rgb(255 255 255 / 82%);
+  }
+
+  .alignStart .bannerContent {
+    align-self: stretch;
+    justify-content: flex-end;
+    max-width: 62%;
+    background: linear-gradient(to right, rgb(8 13 28 / 92%) 0%, rgb(8 13 28 / 70%) 60%, rgb(8 13 28 / 0%) 100%);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * ResultSummary
+ * ------------------------------------------------------------------------ */
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: var(--omnia-space-6);
+}
+
+.resultHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--omnia-space-2);
+  text-align: center;
+}
+
+.resultEmblem {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: var(--omnia-space-2);
+  color: var(--omnia-gold);
+}
+
+.resultEmblem svg {
+  width: 100%;
+  height: 100%;
+}
+
+.resultTitle {
+  font-family: var(--omnia-font-display);
+  font-size: var(--omnia-text-page);
+  font-weight: var(--omnia-weight-semibold);
+}
+
+.resultSubtitle {
+  color: var(--omnia-fg-muted);
+}
+
+.resultSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--omnia-space-3);
+}
+
+.resultSectionTitle {
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-caption);
+  font-weight: var(--omnia-weight-semibold);
+  letter-spacing: var(--omnia-tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.resultRewards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--omnia-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resultActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--omnia-space-3);
+}
+
+.celebrate .resultEmblem {
+  animation: emblem 520ms var(--omnia-ease-enter) both;
+}
+
+.celebrate .resultRewards > li {
+  animation: reveal 360ms var(--omnia-ease-enter) both;
+  animation-delay: calc(140ms + var(--_i, 0) * 60ms);
+}
+
+@keyframes emblem {
+  from {
+    opacity: 0;
+    transform: scale(0.7) rotate(-12deg);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celebrate .resultEmblem,
+  .celebrate .resultRewards > li {
+    animation: none;
+  }
+}

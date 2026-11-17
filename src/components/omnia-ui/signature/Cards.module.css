@@ -1,0 +1,504 @@
+/* ---------------------------------------------------------------------------
+ * FeatureAction
+ * ------------------------------------------------------------------------ */
+.feature {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--omnia-space-4);
+  min-height: 88px;
+  padding: var(--omnia-space-4) var(--omnia-space-5);
+  border: 1px solid var(--omnia-border);
+  border-radius: var(--omnia-radius-md);
+  background: var(--omnia-surface-1);
+  color: var(--omnia-fg);
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 var(--omnia-edge-highlight);
+  transition:
+    border-color var(--omnia-duration-fast) var(--omnia-ease-out),
+    background-color var(--omnia-duration-fast) var(--omnia-ease-out),
+    transform var(--omnia-duration-fast) var(--omnia-ease-out);
+}
+
+@media (hover: hover) {
+  .feature:hover {
+    border-color: color-mix(in oklab, var(--omnia-accent) 55%, var(--omnia-border));
+    background: var(--omnia-surface-2);
+  }
+
+  .feature:hover .featureArrow {
+    transform: translateX(3px);
+    color: var(--omnia-accent);
+  }
+}
+
+.feature:active {
+  transform: translateY(1px);
+}
+
+.feature:focus-visible {
+  outline: 2px solid var(--omnia-focus);
+  outline-offset: 2px;
+}
+
+.featureIcon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--omnia-radius-sm);
+  background:
+    linear-gradient(160deg, color-mix(in oklab, var(--omnia-accent) 28%, transparent), transparent),
+    var(--omnia-surface-2);
+  color: var(--omnia-accent);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--omnia-accent) 30%, transparent);
+}
+
+.featureText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.featureTitleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--omnia-space-2);
+}
+
+.featureTitle {
+  font-size: var(--omnia-text-body);
+  font-weight: var(--omnia-weight-semibold);
+}
+
+.featureDescription {
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-small);
+}
+
+.featureArrow {
+  flex: none;
+  color: var(--omnia-fg-muted);
+  transition:
+    transform var(--omnia-duration-fast) var(--omnia-ease-out),
+    color var(--omnia-duration-fast) var(--omnia-ease-out);
+}
+
+/* ---------------------------------------------------------------------------
+ * PortraitCard
+ * ------------------------------------------------------------------------ */
+.portrait {
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--omnia-border);
+  border-radius: var(--omnia-radius-md);
+  background: var(--omnia-surface-1);
+}
+
+.portraitSelected {
+  border-color: var(--omnia-accent);
+  box-shadow: 0 0 0 1px var(--omnia-accent), 0 0 24px var(--omnia-glow);
+}
+
+.portraitMedia {
+  position: relative;
+}
+
+.portraitFrame {
+  border-radius: 0;
+}
+
+.portraitOverlay {
+  position: absolute;
+  inset: var(--omnia-space-2) var(--omnia-space-2) auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--omnia-space-2);
+}
+
+.portraitOverlay > * {
+  border-radius: var(--omnia-radius-pill);
+  background: color-mix(in oklab, var(--omnia-canvas) 82%, transparent);
+}
+
+.portraitBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--omnia-space-2);
+  padding: var(--omnia-space-3) var(--omnia-space-4) var(--omnia-space-4);
+}
+
+.portraitTitle {
+  overflow-wrap: anywhere;
+  font-size: var(--omnia-text-body);
+  font-weight: var(--omnia-weight-semibold);
+}
+
+.portraitTitle a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.portraitTitle a:hover {
+  text-decoration: underline;
+}
+
+.portraitSubtitle {
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-small);
+}
+
+.portraitMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--omnia-space-1);
+}
+
+.portraitActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--omnia-space-2);
+  margin-top: auto;
+  padding-top: var(--omnia-space-2);
+}
+
+@container (min-width: 320px) {
+  .portraitBody {
+    padding: var(--omnia-space-4) var(--omnia-space-5) var(--omnia-space-5);
+  }
+
+  .portraitTitle {
+    font-size: var(--omnia-text-lead);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * EquipmentSlot
+ * ------------------------------------------------------------------------ */
+.slot {
+  display: flex;
+  align-items: center;
+  gap: var(--omnia-space-3);
+  width: 100%;
+  min-height: 72px;
+  padding: var(--omnia-space-3);
+  border: 1px solid var(--omnia-border);
+  border-radius: var(--omnia-radius-sm);
+  background: var(--omnia-surface-1);
+  color: var(--omnia-fg);
+  text-align: start;
+  font: inherit;
+}
+
+button.slot {
+  cursor: pointer;
+  transition:
+    border-color var(--omnia-duration-fast) var(--omnia-ease-out),
+    background-color var(--omnia-duration-fast) var(--omnia-ease-out);
+}
+
+@media (hover: hover) {
+  button.slot:hover {
+    border-color: color-mix(in oklab, var(--omnia-accent) 55%, var(--omnia-border));
+    background: var(--omnia-surface-2);
+  }
+}
+
+button.slot:focus-visible {
+  outline: 2px solid var(--omnia-focus);
+  outline-offset: 2px;
+}
+
+.slotEmpty {
+  border-style: dashed;
+  border-color: var(--omnia-border-strong);
+  background: transparent;
+}
+
+.slotThumb {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--omnia-radius-xs);
+  background:
+    linear-gradient(150deg, color-mix(in oklab, var(--_tone, var(--omnia-fg-muted)) 30%, transparent), transparent 80%),
+    var(--omnia-surface-2);
+  color: var(--_tone, var(--omnia-fg-muted));
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--_tone, var(--omnia-border)) 45%, transparent);
+}
+
+.slotEmpty .slotThumb {
+  background: var(--omnia-surface-2);
+  box-shadow: none;
+  color: var(--omnia-fg-muted);
+}
+
+.slotText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.slotLabel {
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-caption);
+  font-weight: var(--omnia-weight-semibold);
+  letter-spacing: var(--omnia-tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.slotName {
+  overflow: hidden;
+  font-size: var(--omnia-text-small);
+  font-weight: var(--omnia-weight-semibold);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.slotMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--omnia-space-1) var(--omnia-space-3);
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-caption);
+  font-variant-numeric: tabular-nums;
+}
+
+.slotAction {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 2px;
+  color: var(--omnia-accent);
+  font-size: var(--omnia-text-small);
+  font-weight: var(--omnia-weight-semibold);
+}
+
+/* ---------------------------------------------------------------------------
+ * QuestNode
+ * ------------------------------------------------------------------------ */
+.quest {
+  display: flex;
+  align-items: center;
+  gap: var(--omnia-space-4);
+  min-height: 72px;
+  padding: var(--omnia-space-3) var(--omnia-space-4);
+  border: 1px solid var(--omnia-border);
+  border-radius: var(--omnia-radius-sm);
+  background: var(--omnia-surface-1);
+  color: var(--omnia-fg);
+  text-decoration: none;
+}
+
+a.quest {
+  transition:
+    border-color var(--omnia-duration-fast) var(--omnia-ease-out),
+    background-color var(--omnia-duration-fast) var(--omnia-ease-out);
+}
+
+@media (hover: hover) {
+  a.quest:hover {
+    border-color: color-mix(in oklab, var(--omnia-accent) 55%, var(--omnia-border));
+    background: var(--omnia-surface-2);
+  }
+}
+
+a.quest:focus-visible {
+  outline: 2px solid var(--omnia-focus);
+  outline-offset: 2px;
+}
+
+.questLocked {
+  background: transparent;
+  color: var(--omnia-fg-muted);
+}
+
+.questCurrent {
+  border-color: color-mix(in oklab, var(--omnia-accent) 60%, var(--omnia-border));
+  box-shadow: inset 3px 0 0 var(--omnia-accent);
+}
+
+.questMarker {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--omnia-radius-xs);
+  background: var(--_tone-soft, var(--omnia-neutral-soft));
+  color: var(--_tone, var(--omnia-fg-muted));
+  transform: rotate(45deg);
+}
+
+.questMarker > * {
+  transform: rotate(-45deg);
+}
+
+.questText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.questEyebrow {
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-caption);
+  font-variant-numeric: tabular-nums;
+}
+
+.questTitle {
+  font-size: var(--omnia-text-body);
+  font-weight: var(--omnia-weight-semibold);
+  overflow-wrap: anywhere;
+}
+
+.questTrailing {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--omnia-space-2);
+}
+
+.questChevron {
+  display: inline-flex;
+  flex: none;
+  color: var(--omnia-fg-muted);
+}
+
+@media (max-width: 479px) {
+  .quest {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr) auto;
+    row-gap: var(--omnia-space-2);
+  }
+
+  .questTrailing {
+    grid-column: 2 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
+  }
+
+  .questChevron {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * RewardTile
+ * ------------------------------------------------------------------------ */
+.reward {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--omnia-space-2);
+  min-width: 0;
+  padding: var(--omnia-space-3);
+  border: 1px solid var(--omnia-border);
+  border-radius: var(--omnia-radius-sm);
+  background: var(--omnia-surface-1);
+  text-align: center;
+}
+
+.rewardRow {
+  flex-direction: row;
+  text-align: start;
+}
+
+.rewardIcon {
+  position: relative;
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--omnia-radius-sm);
+  background:
+    radial-gradient(circle at 50% 35%, color-mix(in oklab, var(--_tone, var(--omnia-accent)) 35%, transparent), transparent 70%),
+    var(--omnia-surface-2);
+  color: var(--_tone, var(--omnia-accent));
+}
+
+.rewardQuantity {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  min-width: 28px;
+  padding: 2px 6px;
+  border: 1px solid var(--omnia-border);
+  border-radius: var(--omnia-radius-pill);
+  background: var(--omnia-surface-1);
+  color: var(--omnia-fg);
+  font-size: var(--omnia-text-caption);
+  font-weight: var(--omnia-weight-bold);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
+}
+
+.rewardText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.rewardName {
+  font-size: var(--omnia-text-small);
+  font-weight: var(--omnia-weight-semibold);
+  overflow-wrap: anywhere;
+}
+
+.rewardState {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--omnia-space-1);
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-caption);
+}
+
+.rewardRow .rewardState {
+  justify-content: flex-start;
+}
+
+.rewardClaimed {
+  background: transparent;
+}
+
+.rewardClaimed .rewardIcon {
+  opacity: 0.6;
+}
+
+.rewardClaimed .rewardState {
+  color: var(--omnia-success);
+}
+
+.rewardLocked .rewardIcon {
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+
+.rewardAction {
+  flex: none;
+}

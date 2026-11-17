@@ -1,0 +1,141 @@
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--omnia-space-3) var(--omnia-space-6);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--omnia-space-2);
+  min-width: 0;
+  max-width: var(--omnia-width-prose);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--omnia-space-2);
+  color: var(--omnia-accent);
+  font-size: var(--omnia-text-caption);
+  font-weight: var(--omnia-weight-semibold);
+  letter-spacing: var(--omnia-tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--omnia-space-3);
+}
+
+.title {
+  font-size: var(--omnia-text-section);
+}
+
+.page .title {
+  font-size: var(--omnia-text-page);
+}
+
+.display .title {
+  font-family: var(--omnia-font-display);
+  font-size: var(--omnia-text-display);
+  font-weight: var(--omnia-weight-semibold);
+  letter-spacing: -0.01em;
+}
+
+.description {
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-body);
+}
+
+.display .description,
+.page .description {
+  font-size: var(--omnia-text-lead);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--omnia-space-2);
+}
+
+/* Slim faceted marker: a small diamond with a luminous tail. */
+.marker {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 3px;
+  color: var(--omnia-accent);
+}
+
+.marker::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: currentColor;
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px var(--omnia-glow);
+}
+
+.marker::after {
+  content: "";
+  width: 14px;
+  height: 2px;
+  border-radius: var(--omnia-radius-pill);
+  background: linear-gradient(90deg, currentColor, transparent);
+}
+
+/* Ornaments */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--omnia-space-3);
+  width: 100%;
+  color: var(--omnia-border-strong);
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor);
+}
+
+.divider::after {
+  background: linear-gradient(90deg, currentColor, transparent);
+}
+
+.dividerGlyph {
+  flex: none;
+  color: var(--omnia-accent);
+}
+
+.corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  color: var(--omnia-accent);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.cornerTopStart {
+  top: var(--omnia-space-2);
+  left: var(--omnia-space-2);
+}
+
+.cornerBottomEnd {
+  right: var(--omnia-space-2);
+  bottom: var(--omnia-space-2);
+  transform: rotate(180deg);
+}
+
+@media (forced-colors: active) {
+  .marker::before {
+    background: CanvasText;
+  }
+}

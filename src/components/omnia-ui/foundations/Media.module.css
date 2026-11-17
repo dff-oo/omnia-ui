@@ -1,0 +1,75 @@
+/* Avatar */
+.avatar {
+  position: relative;
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: var(--_size);
+  height: var(--_size);
+  overflow: hidden;
+  border: 1px solid var(--omnia-border);
+  border-radius: var(--omnia-radius-pill);
+  background: var(--omnia-surface-3);
+  color: var(--omnia-fg-muted);
+  font-size: calc(var(--_size) * 0.38);
+  font-weight: var(--omnia-weight-semibold);
+  user-select: none;
+}
+
+.rounded {
+  border-radius: var(--omnia-radius-sm);
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Image frame */
+.frame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--omnia-radius-md);
+  background: var(--omnia-surface-2);
+  /* --omnia-image-ratio lets a layout override the ratio responsively for frames it contains. */
+  aspect-ratio: var(--omnia-image-ratio, var(--_ratio, 1));
+}
+
+.frame > img,
+.frame > .art,
+.frame > .missing {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--_focus, center);
+}
+
+/* Generated art placeholder: gradient + crystal glyph. */
+.art {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(120% 90% at 30% 15%, color-mix(in oklab, var(--_hue-from) 70%, white 10%) 0%, transparent 60%),
+    linear-gradient(160deg, var(--_hue-from) 0%, var(--_hue-to) 100%);
+  color: rgb(255 255 255 / 55%);
+}
+
+.artGlyph {
+  width: 38%;
+  height: auto;
+  max-width: 120px;
+  filter: drop-shadow(0 4px 16px rgb(0 0 0 / 25%));
+}
+
+.missing {
+  display: grid;
+  place-items: center;
+  gap: var(--omnia-space-2);
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-small);
+  text-align: center;
+}

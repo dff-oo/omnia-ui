@@ -1,0 +1,124 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  min-height: 100dvh;
+  background: var(--omnia-backdrop);
+  transition: opacity var(--omnia-duration-slow) var(--omnia-ease-out);
+}
+
+@supports (-webkit-touch-callout: none) {
+  .backdrop {
+    position: absolute;
+  }
+}
+
+.backdrop[data-starting-style],
+.backdrop[data-ending-style] {
+  opacity: 0;
+}
+
+.viewport {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--omnia-space-4);
+}
+
+.popup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(520px, 100%);
+  max-height: 100%;
+  border: 1px solid var(--omnia-border);
+  border-radius: var(--omnia-radius-lg);
+  background: var(--omnia-surface-1);
+  color: var(--omnia-fg);
+  box-shadow:
+    inset 0 1px 0 var(--omnia-edge-highlight),
+    var(--omnia-shadow-overlay);
+  outline: 0;
+  transition:
+    opacity var(--omnia-duration-slow) var(--omnia-ease-enter),
+    transform var(--omnia-duration-slow) var(--omnia-ease-enter);
+}
+
+.popup[data-starting-style],
+.popup[data-ending-style] {
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+}
+
+.sm {
+  width: min(400px, 100%);
+}
+
+.lg {
+  width: min(720px, 100%);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--omnia-space-4);
+  padding: var(--omnia-space-6) var(--omnia-space-6) 0;
+}
+
+.headings {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--omnia-space-2);
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--omnia-text-section);
+  font-weight: var(--omnia-weight-semibold);
+  line-height: var(--omnia-leading-tight);
+}
+
+.description {
+  color: var(--omnia-fg-muted);
+}
+
+.close {
+  margin: calc(var(--omnia-space-2) * -1) calc(var(--omnia-space-2) * -1) 0 0;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  padding: var(--omnia-space-5) var(--omnia-space-6);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--omnia-space-3);
+  padding: 0 var(--omnia-space-6) var(--omnia-space-6);
+}
+
+.header + .footer {
+  padding-top: var(--omnia-space-6);
+}
+
+@media (max-width: 479px) {
+  .footer {
+    flex-direction: column-reverse;
+  }
+
+  .footer > * {
+    width: 100%;
+  }
+}
+
+@media (forced-colors: active) {
+  .popup {
+    border-color: CanvasText;
+  }
+}

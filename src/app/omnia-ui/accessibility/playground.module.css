@@ -1,0 +1,46 @@
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--omnia-space-5) var(--omnia-space-8);
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: var(--omnia-space-2);
+}
+
+.controlLabel {
+  font-size: var(--omnia-text-small);
+  font-weight: var(--omnia-weight-semibold);
+}
+
+.stage {
+  overflow: auto;
+  padding: var(--omnia-space-4);
+  border: 1px dashed var(--omnia-border-strong);
+  border-radius: var(--omnia-radius-md);
+  background: var(--omnia-canvas);
+}
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  gap: var(--omnia-space-5);
+  margin-inline: auto;
+}
+
+.narrow {
+  width: 320px;
+  max-width: none;
+  outline: 1px solid var(--omnia-border);
+  outline-offset: var(--omnia-space-2);
+}
+
+.checklist {
+  display: grid;
+  gap: var(--omnia-space-2);
+  margin: 0;
+  padding-inline-start: var(--omnia-space-5);
+}

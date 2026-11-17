@@ -1,0 +1,228 @@
+/*
+ * Omnia UI design tokens.
+ * Components reference semantic tokens only (--omnia-*). Raw hex values live here and nowhere else.
+ */
+
+:root {
+  /* Spacing */
+  --omnia-space-1: 4px;
+  --omnia-space-2: 8px;
+  --omnia-space-3: 12px;
+  --omnia-space-4: 16px;
+  --omnia-space-5: 20px;
+  --omnia-space-6: 24px;
+  --omnia-space-8: 32px;
+  --omnia-space-10: 40px;
+  --omnia-space-12: 48px;
+  --omnia-space-16: 64px;
+  --omnia-space-20: 80px;
+
+  /* Radii */
+  --omnia-radius-xs: 6px;
+  --omnia-radius-sm: 10px;
+  --omnia-radius-md: 14px;
+  --omnia-radius-lg: 20px;
+  --omnia-radius-pill: 999px;
+
+  /* Control sizing */
+  --omnia-control-sm: 32px;
+  --omnia-control-md: 40px;
+  --omnia-control-lg: 48px;
+  --omnia-input-md: 44px;
+  --omnia-input-lg: 48px;
+  --omnia-hit-min: 44px;
+
+  /* Icons */
+  --omnia-icon-sm: 16px;
+  --omnia-icon-md: 20px;
+  --omnia-icon-lg: 24px;
+  --omnia-icon-xl: 32px;
+
+  /* Layout */
+  --omnia-width-prose: 720px;
+  --omnia-width-app: 1120px;
+  --omnia-width-wide: 1280px;
+  --omnia-gutter: 16px;
+
+  /* Typography */
+  --omnia-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif;
+  --omnia-font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, ui-serif, serif;
+  --omnia-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  --omnia-text-caption: 0.75rem;
+  --omnia-text-small: 0.875rem;
+  --omnia-text-body: 1rem;
+  --omnia-text-lead: 1.125rem;
+  --omnia-text-section: 1.5rem;
+  --omnia-text-page: 2rem;
+  --omnia-text-display: clamp(2.5rem, 1.75rem + 2.5vw, 3.5rem);
+
+  --omnia-leading-body: 1.55;
+  --omnia-leading-tight: 1.2;
+
+  --omnia-weight-regular: 400;
+  --omnia-weight-medium: 500;
+  --omnia-weight-semibold: 600;
+  --omnia-weight-bold: 700;
+
+  --omnia-tracking-eyebrow: 0.08em;
+
+  /* Motion */
+  --omnia-duration-fast: 120ms;
+  --omnia-duration-base: 180ms;
+  --omnia-duration-slow: 240ms;
+  --omnia-ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --omnia-ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Signature geometry */
+  --omnia-facet: 12px;
+  --omnia-facet-sm: 6px;
+
+  /* Layering (inside the isolated .omnia-root) */
+  --omnia-z-sticky: 10;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --omnia-gutter: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --omnia-gutter: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --omnia-duration-fast: 0.01ms;
+    --omnia-duration-base: 0.01ms;
+    --omnia-duration-slow: 0.01ms;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Dark — primary immersive app mode. Also the default without an attribute.
+ * ------------------------------------------------------------------------ */
+:root,
+[data-omnia-theme="dark"] {
+  color-scheme: dark;
+
+  --omnia-canvas: #0b1120;
+  --omnia-surface-1: #141d31;
+  --omnia-surface-2: #1b2942;
+  --omnia-surface-3: #263653;
+  --omnia-border: #354762;
+  --omnia-border-strong: #5a6e8e;
+
+  --omnia-fg: #f4f7ff;
+  --omnia-fg-muted: #acbbd2;
+
+  --omnia-accent: #79b8ff;
+  --omnia-accent-strong: #2f6fd0;
+  --omnia-accent-strong-hover: #3a7ce0;
+  --omnia-on-accent: #ffffff;
+
+  --omnia-gold: #e8c779;
+  --omnia-violet: #c3a6ff;
+  --omnia-success: #63d1a4;
+  --omnia-warning: #f3bf67;
+  --omnia-danger: #fb8292;
+  --omnia-danger-strong: #c2364d;
+  --omnia-danger-strong-hover: #d0435a;
+  --omnia-on-danger: #ffffff;
+
+  --omnia-focus: #aad5ff;
+
+  --omnia-shadow-subtle: 0 1px 2px rgb(2 6 18 / 40%);
+  --omnia-shadow-raised: 0 2px 4px rgb(2 6 18 / 35%), 0 8px 24px rgb(2 6 18 / 35%);
+  --omnia-shadow-overlay: 0 12px 48px rgb(2 6 18 / 60%), 0 2px 8px rgb(2 6 18 / 40%);
+
+  --omnia-edge-highlight: rgb(214 228 255 / 14%);
+  --omnia-glow: rgb(121 184 255 / 22%);
+  --omnia-signature-from: #1c2e4f;
+  --omnia-signature-to: #141d31;
+
+  --omnia-backdrop: rgb(4 8 20 / 72%);
+  --omnia-scrim: linear-gradient(to top, rgb(8 13 28 / 94%) 0%, rgb(8 13 28 / 72%) 45%, rgb(8 13 28 / 0%) 100%);
+  --omnia-art-from: #2a4a86;
+  --omnia-art-to: #0f1a33;
+}
+
+[data-omnia-theme="light"] {
+  color-scheme: light;
+
+  --omnia-canvas: #f6f8fc;
+  --omnia-surface-1: #ffffff;
+  --omnia-surface-2: #ecf2fa;
+  --omnia-surface-3: #e2eaf5;
+  --omnia-border: #ccd6e5;
+  --omnia-border-strong: #8494ad;
+
+  --omnia-fg: #142137;
+  --omnia-fg-muted: #506079;
+
+  --omnia-accent: #145ed3;
+  --omnia-accent-strong: #1758bb;
+  --omnia-accent-strong-hover: #134ca2;
+  --omnia-on-accent: #ffffff;
+
+  /* Darker than the brief's starting values so text passes 4.5:1 on their own soft tints. */
+  --omnia-gold: #7a5313;
+  --omnia-violet: #6b47c2;
+  --omnia-success: #15674c;
+  --omnia-warning: #81500d;
+  --omnia-danger: #b42340;
+  --omnia-danger-strong: #b42340;
+  --omnia-danger-strong-hover: #9c1d37;
+  --omnia-on-danger: #ffffff;
+
+  --omnia-focus: #145ed3;
+
+  --omnia-shadow-subtle: 0 1px 2px rgb(20 33 55 / 8%);
+  --omnia-shadow-raised: 0 1px 3px rgb(20 33 55 / 8%), 0 8px 24px rgb(20 33 55 / 8%);
+  --omnia-shadow-overlay: 0 16px 48px rgb(20 33 55 / 18%), 0 2px 8px rgb(20 33 55 / 10%);
+
+  --omnia-edge-highlight: rgb(255 255 255 / 90%);
+  --omnia-glow: rgb(20 94 211 / 14%);
+  --omnia-signature-from: #eef4ff;
+  --omnia-signature-to: #ffffff;
+
+  --omnia-backdrop: rgb(20 33 55 / 45%);
+  --omnia-scrim: linear-gradient(to top, rgb(8 13 28 / 90%) 0%, rgb(8 13 28 / 66%) 45%, rgb(8 13 28 / 0%) 100%);
+  --omnia-art-from: #7fa8e8;
+  --omnia-art-to: #2b4f8f;
+}
+
+/* No-JS fallback: honour the OS preference when the theme script could not run. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-omnia-theme]) {
+    color-scheme: light;
+
+    --omnia-canvas: #f6f8fc;
+    --omnia-surface-1: #ffffff;
+    --omnia-surface-2: #ecf2fa;
+    --omnia-surface-3: #e2eaf5;
+    --omnia-border: #ccd6e5;
+    --omnia-border-strong: #8494ad;
+    --omnia-fg: #142137;
+    --omnia-fg-muted: #506079;
+    --omnia-accent: #145ed3;
+    --omnia-accent-strong: #1758bb;
+    --omnia-focus: #145ed3;
+  }
+}
+
+/* Soft tints derived from the semantic tones. */
+:root,
+[data-omnia-theme] {
+  --omnia-accent-soft: color-mix(in oklab, var(--omnia-accent) 16%, transparent);
+  --omnia-gold-soft: color-mix(in oklab, var(--omnia-gold) 16%, transparent);
+  --omnia-violet-soft: color-mix(in oklab, var(--omnia-violet) 16%, transparent);
+  --omnia-success-soft: color-mix(in oklab, var(--omnia-success) 16%, transparent);
+  --omnia-warning-soft: color-mix(in oklab, var(--omnia-warning) 16%, transparent);
+  --omnia-danger-soft: color-mix(in oklab, var(--omnia-danger) 16%, transparent);
+  --omnia-neutral-soft: color-mix(in oklab, var(--omnia-fg-muted) 14%, transparent);
+}

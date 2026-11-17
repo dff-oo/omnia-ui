@@ -1,0 +1,232 @@
+/* Separator */
+.separator {
+  flex: none;
+  border: 0;
+  background: var(--omnia-border);
+}
+
+.separator[data-orientation="horizontal"] {
+  width: 100%;
+  height: 1px;
+}
+
+.separator[data-orientation="vertical"] {
+  align-self: stretch;
+  width: 1px;
+}
+
+/* Skeleton */
+.skeleton {
+  display: block;
+  border-radius: var(--omnia-radius-xs);
+  background: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in oklab, var(--omnia-fg) 6%, transparent) 50%,
+      transparent 100%
+    )
+    var(--omnia-surface-3);
+  background-size: 200% 100%;
+  animation: shimmer 1600ms ease-in-out infinite;
+}
+
+.skeletonText {
+  height: 0.875em;
+  border-radius: var(--omnia-radius-pill);
+}
+
+.skeletonCircle {
+  border-radius: var(--omnia-radius-pill);
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
+/* Progress & Meter share a track */
+.progress {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: var(--omnia-space-2) var(--omnia-space-3);
+  min-width: 0;
+}
+
+.progressLabel {
+  font-size: var(--omnia-text-small);
+  font-weight: var(--omnia-weight-medium);
+}
+
+.progressValue {
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-small);
+  font-variant-numeric: tabular-nums;
+}
+
+.track {
+  grid-column: 1 / -1;
+  height: 8px;
+  overflow: hidden;
+  border-radius: var(--omnia-radius-pill);
+  background: var(--omnia-surface-3);
+}
+
+.indicator {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--_tone, var(--omnia-accent));
+  transition: width var(--omnia-duration-slow) var(--omnia-ease-out);
+}
+
+.progress[data-indeterminate] .indicator {
+  width: 40% !important;
+  animation: indeterminate 1400ms var(--omnia-ease-out) infinite;
+}
+
+@keyframes indeterminate {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(250%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress[data-indeterminate] .indicator {
+    animation: none;
+    width: 100% !important;
+    opacity: 0.4;
+  }
+}
+
+.toneAccent {
+  --_tone: var(--omnia-accent);
+}
+
+.toneSuccess {
+  --_tone: var(--omnia-success);
+}
+
+.toneWarning {
+  --_tone: var(--omnia-warning);
+}
+
+.toneDanger {
+  --_tone: var(--omnia-danger);
+}
+
+.toneGold {
+  --_tone: var(--omnia-gold);
+}
+
+/* Empty state */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--omnia-space-3);
+  padding: var(--omnia-space-10) var(--omnia-space-6);
+  text-align: center;
+}
+
+.emptyIcon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--omnia-space-1);
+  border-radius: var(--omnia-radius-pill);
+  background: var(--omnia-accent-soft);
+  color: var(--omnia-accent);
+}
+
+.emptyTitle {
+  font-size: var(--omnia-text-lead);
+  font-weight: var(--omnia-weight-semibold);
+}
+
+.emptyDescription {
+  max-width: 44ch;
+  color: var(--omnia-fg-muted);
+}
+
+.emptyActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--omnia-space-3);
+  margin-top: var(--omnia-space-2);
+}
+
+/* Callout */
+.callout {
+  --_tone: var(--omnia-accent);
+  --_bg: var(--omnia-accent-soft);
+
+  display: flex;
+  gap: var(--omnia-space-3);
+  padding: var(--omnia-space-4);
+  border: 1px solid color-mix(in oklab, var(--_tone) 35%, transparent);
+  border-radius: var(--omnia-radius-sm);
+  background: var(--_bg);
+}
+
+.calloutIcon {
+  flex: none;
+  color: var(--_tone);
+}
+
+.calloutBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--omnia-space-1);
+  min-width: 0;
+  font-size: var(--omnia-text-small);
+}
+
+.calloutTitle {
+  font-size: var(--omnia-text-body);
+  font-weight: var(--omnia-weight-semibold);
+}
+
+.calloutInfo {
+  --_tone: var(--omnia-accent);
+  --_bg: var(--omnia-accent-soft);
+}
+
+.calloutSuccess {
+  --_tone: var(--omnia-success);
+  --_bg: var(--omnia-success-soft);
+}
+
+.calloutWarning {
+  --_tone: var(--omnia-warning);
+  --_bg: var(--omnia-warning-soft);
+}
+
+.calloutDanger {
+  --_tone: var(--omnia-danger);
+  --_bg: var(--omnia-danger-soft);
+}
+
+@media (forced-colors: active) {
+  .callout {
+    border-color: CanvasText;
+  }
+
+  .indicator {
+    background: Highlight;
+  }
+}

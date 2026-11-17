@@ -1,0 +1,72 @@
+.badge {
+  --_fg: var(--omnia-fg-muted);
+  --_bg: var(--omnia-neutral-soft);
+
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--omnia-space-1);
+  height: 24px;
+  padding: 0 var(--omnia-space-2);
+  border: 1px solid transparent;
+  border-radius: var(--omnia-radius-pill);
+  background: var(--_bg);
+  color: var(--_fg);
+  font-size: var(--omnia-text-caption);
+  font-weight: var(--omnia-weight-semibold);
+  line-height: 1;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.md {
+  height: 28px;
+  padding: 0 var(--omnia-space-3);
+  font-size: var(--omnia-text-small);
+}
+
+.outline {
+  background: transparent;
+  border-color: color-mix(in oklab, var(--_fg) 45%, transparent);
+}
+
+.neutral {
+  --_fg: var(--omnia-fg-muted);
+  --_bg: var(--omnia-neutral-soft);
+}
+
+.accent {
+  --_fg: var(--omnia-accent);
+  --_bg: var(--omnia-accent-soft);
+}
+
+.success {
+  --_fg: var(--omnia-success);
+  --_bg: var(--omnia-success-soft);
+}
+
+.warning {
+  --_fg: var(--omnia-warning);
+  --_bg: var(--omnia-warning-soft);
+}
+
+.danger {
+  --_fg: var(--omnia-danger);
+  --_bg: var(--omnia-danger-soft);
+}
+
+.gold {
+  --_fg: var(--omnia-gold);
+  --_bg: var(--omnia-gold-soft);
+}
+
+.violet {
+  --_fg: var(--omnia-violet);
+  --_bg: var(--omnia-violet-soft);
+}
+
+@media (forced-colors: active) {
+  .badge {
+    border-color: CanvasText;
+  }
+}

@@ -1,0 +1,210 @@
+/* Shared floating-surface styles for Select, Menu, Popover and Tooltip. */
+
+.positioner {
+  z-index: 50;
+  outline: 0;
+}
+
+.popup {
+  min-width: max(var(--anchor-width, 0px), 200px);
+  max-width: min(360px, var(--available-width, 100vw));
+  max-height: var(--available-height);
+  padding: var(--omnia-space-1);
+  border: 1px solid var(--omnia-border);
+  border-radius: var(--omnia-radius-sm);
+  background: var(--omnia-surface-1);
+  color: var(--omnia-fg);
+  box-shadow:
+    inset 0 1px 0 var(--omnia-edge-highlight),
+    var(--omnia-shadow-overlay);
+  overflow-y: auto;
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity var(--omnia-duration-base) var(--omnia-ease-out),
+    transform var(--omnia-duration-base) var(--omnia-ease-out);
+  outline: 0;
+}
+
+.popup[data-starting-style],
+.popup[data-ending-style] {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--omnia-space-3);
+  min-height: var(--omnia-hit-min);
+  padding: 0 var(--omnia-space-3);
+  border-radius: var(--omnia-radius-xs);
+  font-size: var(--omnia-text-small);
+  cursor: default;
+  user-select: none;
+  outline: 0;
+}
+
+.item[data-highlighted] {
+  background: var(--omnia-accent-soft);
+  color: var(--omnia-fg);
+}
+
+.item[data-disabled] {
+  opacity: 0.5;
+}
+
+.itemDanger {
+  color: var(--omnia-danger);
+}
+
+.itemDanger[data-highlighted] {
+  background: var(--omnia-danger-soft);
+  color: var(--omnia-danger);
+}
+
+.itemText {
+  flex: 1;
+  min-width: 0;
+}
+
+.itemIndicator {
+  display: inline-flex;
+  width: 16px;
+  color: var(--omnia-accent);
+}
+
+.itemIcon {
+  display: inline-flex;
+  color: var(--omnia-fg-muted);
+}
+
+.shortcut {
+  margin-inline-start: auto;
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-caption);
+}
+
+.groupLabel {
+  padding: var(--omnia-space-2) var(--omnia-space-3) var(--omnia-space-1);
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-caption);
+  font-weight: var(--omnia-weight-semibold);
+  letter-spacing: var(--omnia-tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.separator {
+  height: 1px;
+  margin: var(--omnia-space-1) var(--omnia-space-2);
+  background: var(--omnia-border);
+}
+
+/* Select trigger reuses the field control look. */
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--omnia-space-2);
+  width: 100%;
+  min-height: var(--omnia-input-md);
+  padding: 0 var(--omnia-space-3);
+  border: 1px solid var(--omnia-border-strong);
+  border-radius: var(--omnia-radius-sm);
+  background: var(--omnia-surface-1);
+  color: var(--omnia-fg);
+  font-size: var(--omnia-text-body);
+  text-align: start;
+  cursor: pointer;
+}
+
+.trigger:hover:not([data-disabled]) {
+  border-color: var(--omnia-fg-muted);
+}
+
+.trigger:focus-visible {
+  outline: 0;
+  border-color: var(--omnia-focus);
+  box-shadow: 0 0 0 1px var(--omnia-focus);
+}
+
+.trigger[data-popup-open] {
+  border-color: var(--omnia-focus);
+}
+
+.trigger[data-invalid] {
+  border-color: var(--omnia-danger);
+}
+
+.trigger[data-disabled] {
+  background: var(--omnia-surface-2);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.value[data-placeholder] {
+  color: var(--omnia-fg-muted);
+}
+
+.triggerIcon {
+  display: inline-flex;
+  flex: none;
+  color: var(--omnia-fg-muted);
+  transition: transform var(--omnia-duration-fast) var(--omnia-ease-out);
+}
+
+.trigger[data-popup-open] .triggerIcon {
+  transform: rotate(180deg);
+}
+
+/* Popover */
+.popover {
+  composes: popup;
+  min-width: 240px;
+  padding: var(--omnia-space-4);
+}
+
+.popoverTitle {
+  margin-bottom: var(--omnia-space-1);
+  font-size: var(--omnia-text-body);
+  font-weight: var(--omnia-weight-semibold);
+}
+
+.popoverDescription {
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-small);
+}
+
+/* Tooltip */
+.tooltip {
+  max-width: 280px;
+  padding: var(--omnia-space-2) var(--omnia-space-3);
+  border-radius: var(--omnia-radius-xs);
+  background: var(--omnia-fg);
+  color: var(--omnia-canvas);
+  font-size: var(--omnia-text-small);
+  line-height: 1.4;
+  box-shadow: var(--omnia-shadow-raised);
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity var(--omnia-duration-fast) var(--omnia-ease-out),
+    transform var(--omnia-duration-fast) var(--omnia-ease-out);
+}
+
+.tooltip[data-starting-style],
+.tooltip[data-ending-style] {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+@media (forced-colors: active) {
+  .popup,
+  .tooltip {
+    border: 1px solid CanvasText;
+  }
+}

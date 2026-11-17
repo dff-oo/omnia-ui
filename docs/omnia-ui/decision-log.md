@@ -1,0 +1,25 @@
+# Omnia UI — decision log
+
+| # | Decision | Why |
+|---|---|---|
+| 1 | Scaffolded a fresh Next.js 16.4 / React 19.3 / TypeScript app with `create-next-app` (App Router, `src/`, ESLint, no Tailwind). | The repository contained only the brief; there were no existing conventions to adapt to. |
+| 2 | `@base-ui/react@1.9` is the only UI dependency. APIs were checked against the docs bundled in `node_modules/@base-ui/react/docs`. | Brief §3. Bundled docs match the installed version exactly. |
+| 3 | The design system lives in `src/components/omnia-ui` and is exported through one barrel (`index.ts`). Not split into a workspace package. | Brief §11: promote to `packages/omnia-ui` only once there is a second consumer. |
+| 4 | Styling is CSS Modules + global custom properties (`styles/tokens.css`). Components only reference semantic tokens (`--omnia-*`). | Brief §3–4. No Sass, no class-variance library. |
+| 5 | Theme is a `data-omnia-theme` attribute on `<html>`, set before paint by an inline `<head>` script reading `localStorage`, with `system` falling back to `prefers-color-scheme`. A `useLayoutEffect` in the theme switcher re-applies it after the dev Strict-Mode remount. | Follows `node_modules/next/dist/docs/01-app/02-guides/preventing-flash-before-hydration.md`. Putting the attribute on `<html>` means Base UI portals inherit the theme automatically. |
+| 6 | App content is wrapped in a `.omnia-root { isolation: isolate }` element and `body { position: relative }`. | Base UI quick-start requirements for portals and iOS 26 backdrops. |
+| 7 | System font stack, no webfont. Removed the scaffold's Geist font. | Brief §4.3: don't add a webfont to resemble the game. |
+| 8 | Native elements for `Button`, `IconButton`, `Badge`, `Card`, `Panel`, `Skeleton`, `EmptyState`, `Callout`. Base UI for `Field`, `Checkbox`, `Switch`, `RadioGroup`, `Select`, `Dialog`, `AlertDialog`, `Tabs`, `Popover`, `Tooltip`, `Menu`, `Progress`, `Meter`, `Separator`, `Avatar`. | Brief §3 "Base UI rule": use it where interaction/AT semantics are hard. |
+| 9 | `StatBar` uses Base UI `Meter` (a measurement within a known range, e.g. HP), while `Progress` uses Base UI `Progress` (task completion). | Correct ARIA role for each case (`meter` vs `progressbar`). |
+| 10 | `Panel` and `CrystalPanel` share one implementation; `CrystalPanel` is `Panel` with `surface="signature"` fixed. | Brief §10: avoid duplicated implementation. |
+| 11 | Signature geometry (cut corners, faceted marker, diamond ornament) is CSS `clip-path` / self-authored SVG. | Brief non-negotiable 2: no traced or extracted assets. |
+| 12 | Art placeholders are generated CSS gradients with a crystal SVG, not images. | No legally supplied art in the repo; demonstrates the no-image path. |
+| 13 | Toast is not implemented. | Brief §6.1: "toast only if need exists". No showcase flow requires it. |
+| 14 | No test runner was added. Verification is lint + typecheck + production build + manual browser checks. | The repo has no test tooling; adding Playwright is noted as a follow-up in the inventory. |
+| 15 | Showcase lives at `/omnia-ui` with one sub-route per section; `/` redirects there through `redirects()` in `next.config.ts` (307). | Brief §7. A `redirect()` inside `app/page.tsx` broke Next 16's dev-time `instant` validation with Cache Components on. |
+| 16 | Light-theme gold, success and warning are darker than the brief's starting values: `#7A5313`, `#15674C`, `#81500D` (from `#9C6B18`, `#197B5A`, `#8F590E`). | Measured in the browser: the originals fell to 3.4–4.2:1 as text on their own 16% soft tints (badges). The new values reach at least 4.79:1 on canvas, surface 1, surface 2 and each tint. |
+| 17 | `BannerFeature` is an immersive dark surface in both themes by default (`data-omnia-theme="dark"` on its root; `immersive={false}` opts out). | On wide layouts the copy sits on a dark scrim; light-theme tokens (e.g. dark gold badge) did not reach contrast there. |
+| 18 | Choice descriptions (Checkbox, Switch, Radio) render outside the `<label>` and are linked with `aria-describedby`. | Inside the label they were concatenated into the accessible name ("Select all rewards Some rewards are selected."). |
+| 19 | `ImageFrame` reads an inheritable `--omnia-image-ratio` before its own `ratio`. | Lets a layout change artwork ratio responsively (party slots go 16:9 and the character overview 4:3 on narrow screens) without a prop explosion. |
+| 20 | `SegmentedControl` gained `iconOnly="narrow"` (labels hidden below 480px, kept as accessible names); `ThemeSwitcher` uses it by default. | At 375px the labelled switcher pushed the sticky header onto two rows. |
+| 21 | The characters route reads `searchParams` inside a `<Suspense>` boundary. | Cache Components requires runtime data behind Suspense; the rest of the page still prerenders (Partial Prerender). |

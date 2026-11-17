@@ -1,0 +1,156 @@
+.button {
+  --_bg: transparent;
+  --_bg-hover: var(--omnia-surface-3);
+  --_fg: var(--omnia-fg);
+  --_border: transparent;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--omnia-space-2);
+  height: var(--omnia-control-md);
+  padding: 0 var(--omnia-space-4);
+  border: 1px solid var(--_border);
+  border-radius: var(--omnia-radius-sm);
+  background: var(--_bg);
+  color: var(--_fg);
+  font-size: var(--omnia-text-small);
+  font-weight: var(--omnia-weight-semibold);
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--omnia-duration-fast) var(--omnia-ease-out),
+    border-color var(--omnia-duration-fast) var(--omnia-ease-out),
+    color var(--omnia-duration-fast) var(--omnia-ease-out),
+    transform var(--omnia-duration-fast) var(--omnia-ease-out);
+}
+
+@media (hover: hover) {
+  .button:hover:not(:disabled, [aria-disabled="true"]) {
+    background: var(--_bg-hover);
+  }
+}
+
+.button:active:not(:disabled, [aria-disabled="true"]) {
+  transform: translateY(1px);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--omnia-focus);
+  outline-offset: 2px;
+}
+
+.button:disabled,
+.button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.button[aria-busy="true"] {
+  cursor: progress;
+  opacity: 1;
+}
+
+/* Variants */
+.primary {
+  --_bg: var(--omnia-accent-strong);
+  --_bg-hover: var(--omnia-accent-strong-hover);
+  --_fg: var(--omnia-on-accent);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 18%),
+    var(--omnia-shadow-subtle);
+}
+
+.secondary {
+  --_bg: var(--omnia-surface-2);
+  --_bg-hover: var(--omnia-surface-3);
+  --_border: var(--omnia-border);
+}
+
+.outline {
+  --_bg: transparent;
+  --_bg-hover: var(--omnia-accent-soft);
+  --_fg: var(--omnia-accent);
+  --_border: var(--omnia-border-strong);
+}
+
+.ghost {
+  --_bg: transparent;
+  --_bg-hover: var(--omnia-surface-3);
+}
+
+.danger {
+  --_bg: var(--omnia-danger-strong);
+  --_bg-hover: var(--omnia-danger-strong-hover);
+  --_fg: var(--omnia-on-danger);
+}
+
+/* Sizes */
+.sm {
+  height: var(--omnia-control-sm);
+  padding: 0 var(--omnia-space-3);
+  border-radius: var(--omnia-radius-xs);
+}
+
+/* Keep a 44px touch target when the visible control is smaller. */
+.sm::after {
+  content: "";
+  position: absolute;
+  inset: calc((var(--omnia-control-sm) - var(--omnia-hit-min)) / 2) 0;
+}
+
+.lg {
+  height: var(--omnia-control-lg);
+  padding: 0 var(--omnia-space-6);
+  font-size: var(--omnia-text-body);
+}
+
+.block {
+  width: 100%;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: inherit;
+}
+
+/* While loading, keep the width stable and overlay the spinner. */
+.button[aria-busy="true"] .label {
+  visibility: hidden;
+}
+
+.spinner {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+
+/* Icon button */
+.icon {
+  width: var(--omnia-control-md);
+  padding: 0;
+}
+
+.icon.sm {
+  width: var(--omnia-control-sm);
+}
+
+.icon.sm::after {
+  inset: calc((var(--omnia-control-sm) - var(--omnia-hit-min)) / 2);
+}
+
+.icon.lg {
+  width: var(--omnia-control-lg);
+}
+
+@media (forced-colors: active) {
+  .button {
+    border-color: ButtonText;
+  }
+}
