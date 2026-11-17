@@ -14,7 +14,7 @@ You are implementing **Omnia UI**, a cohesive React design system for a modern D
 **Non-negotiables**
 
 1. **Use `@base-ui/react` as the only component/headless UI library dependency.** Do not install shadcn/ui, Radix, MUI, Chakra, Ant, Headless UI, React Aria, NextUI/HeroUI, daisyUI or other UI component systems. React, Next.js and the project's existing tooling are fine. Do not introduce Tailwind unless it already exists; prefer CSS Modules plus CSS custom properties. Avoid third-party icon packs, animation and class-variance libraries as new runtime dependencies: use local SVG and CSS transitions.
-2. Do not trace game UI frames, borders or logos, and do not embed screenshots. Reference screenshots **only for high-level art direction**. Interface chrome is self-authored CSS/SVG. A small set of extracted sprites may live in `game-icons/` (see the decision log): they are the game's own icons, kept apart from the component code, and the project does not present itself as an official Square Enix library.
+2. Do not trace game UI frames, borders or logos, and do not embed screenshots. Reference screenshots **only for high-level art direction**. Interface chrome is self-authored CSS/SVG. A small set of extracted sprites may be loaded from `icons/` in the dffoogg/cdn repo (see the decision log): they are the game's own icons, kept out of the package, and the project does not present itself as an official Square Enix library.
 3. Prioritise platform best practices over game nostalgia: readable text, excellent touch targets, consistent spacing, straightforward layouts, WCAG 2.2 AA as a target, reduced motion, keyboard support, SSR and responsive design.
 4. Design-system primitives must not know about DFFOO domain entities. Domain-specific components compose the primitives.
 5. **Make it real:** build working, typed components and a browsable showcase route, not a collection of static mockups or isolated style explorations.
@@ -89,7 +89,7 @@ Original DFFOO is a mobile game made for its era. Omnia UI is a modern responsiv
 
 **Not:** medieval parchment; generic SaaS purple gradients; 90s pixel UI; high-noise sci-fi HUD; literal Square Enix branding.
 
-**Brand boundary:** 'Omnia UI' is an independent fan-made system inspired by DFFOO. Do not imply it is an official Square Enix library. Game sprites in `game-icons/` belong to Square Enix. Logos, screenshots and character art stay out of the component code.
+**Brand boundary:** 'Omnia UI' is an independent fan-made system inspired by DFFOO. Do not imply it is an official Square Enix library. Game sprites in the CDN's `icons/` belong to Square Enix. Logos, screenshots and character art stay out of the component code.
 
 ---
 

@@ -1,33 +1,26 @@
-import type { StaticImageData } from "next/image";
-import battle from "./battle.png";
-import cutscene from "./cutscene.png";
-import goal from "./goal.png";
-import helmetGold from "./helmet-gold.png";
-import helmetGreen from "./helmet-green.png";
-import helmetSilver from "./helmet-silver.png";
-import hexEvent from "./hex-event.png";
-import hexGrid from "./hex-grid.png";
-import hexSelected from "./hex-selected.png";
-import move from "./move.png";
-import portal from "./portal.png";
-import start from "./start.png";
-import treasure from "./treasure.png";
+/** Where extracted game images are served. `NEXT_PUBLIC_DFFOO_CDN` points at another copy of the dffoogg/cdn repo. */
+export const GAME_CDN_URL = process.env.NEXT_PUBLIC_DFFOO_CDN ?? "https://dffoogg.github.io/cdn";
 
-const ICONS = {
-  cutscene,
-  battle,
-  treasure,
-  move,
-  portal,
-  start,
-  goal,
-  "helmet-silver": helmetSilver,
-  "helmet-gold": helmetGold,
-  "helmet-green": helmetGreen,
-  "hex-grid": hexGrid,
-  "hex-event": hexEvent,
-  "hex-selected": hexSelected,
-} satisfies Record<string, StaticImageData>;
+/** URL of a file in the CDN, such as `characters/8.png` or `maps/001.png`. */
+export function gameCdnSrc(path: string): string {
+  return `${GAME_CDN_URL}/${path}`;
+}
+
+export const GAME_ICON_NAMES = [
+  "cutscene",
+  "battle",
+  "treasure",
+  "move",
+  "portal",
+  "start",
+  "goal",
+  "helmet-silver",
+  "helmet-gold",
+  "helmet-green",
+  "hex-grid",
+  "hex-event",
+  "hex-selected",
+] as const;
 
 /**
  * Where the hex line sits inside the untrimmed 256 by 256 `hex-grid`, `hex-event` and
@@ -37,7 +30,7 @@ const ICONS = {
  */
 export const GAME_HEX_FRAME = { size: 256, left: 38.5, top: 65.5, width: 179, height: 125 } as const;
 
-export type GameIconName = keyof typeof ICONS;
+export type GameIconName = (typeof GAME_ICON_NAMES)[number];
 
 export interface GameIconProps {
   name: GameIconName;
@@ -48,13 +41,9 @@ export interface GameIconProps {
   className?: string;
 }
 
-function source(image: StaticImageData | string): string {
-  return typeof image === "string" ? image : image.src;
-}
-
 /** URL of a sprite, for places an `<img>` can't go, such as an SVG `<image>`. */
 export function gameIconSrc(name: GameIconName): string {
-  return source(ICONS[name]);
+  return gameCdnSrc(`icons/${name}.png`);
 }
 
 /** A sprite taken from the game client. Decorative unless `label` is set. */

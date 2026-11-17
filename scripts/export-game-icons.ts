@@ -1,7 +1,7 @@
 /**
  * Extracts a small set of named icons from the game client archive.
  * A maintainer runs `npm run game-icons` when the archive is on disk.
- * The PNGs are committed, so CI and other apps never need the archive.
+ * The PNGs go to `icons/` in the dffoogg/cdn checkout, which serves them; `GameIcon` loads them from there.
  *
  * FieldMap_Hex.g1t holds one sprite per texture, format 0x36: 16-bit RGBA4444
  * with red in the high nibble and alpha in the low nibble.
@@ -38,6 +38,11 @@ function repoRoot(): string {
 
 function archiveRoot(): string {
   return resolve(process.env.DFFOO_GAME_DIR ?? resolve(repoRoot(), '..', 'dffoogg-game'), 'archive');
+}
+
+/** The dffoogg/cdn checkout next to this repo. DFFOO_CDN_DIR overrides it. */
+function cdnRoot(): string {
+  return process.env.DFFOO_CDN_DIR ?? resolve(repoRoot(), '..', 'dffoogg-cdn');
 }
 
 function unpackerRoot(): string {
@@ -176,7 +181,7 @@ function encodePng(rgba: Buffer, width: number, height: number): Buffer {
 
 function exportGameIcons(): void {
   const assets = indexAssets();
-  const outDir = join(repoRoot(), 'src', 'components', 'omnia-ui', 'game-icons');
+  const outDir = join(cdnRoot(), 'icons');
   mkdirSync(outDir, { recursive: true });
   const decoded = new Map<string, Buffer>();
   const manifest: { name: string; file: string; index: number; trim?: false; width: number; height: number }[] = [];
