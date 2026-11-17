@@ -2,7 +2,8 @@
 export { ThemeScript } from "./theme/ThemeScript";
 export { ThemeRoot, type ThemeRootProps } from "./theme/ThemeRoot";
 export { ThemeSwitcher, type ThemeSwitcherProps } from "./theme/ThemeSwitcher";
-export { useThemePreference } from "./theme/useThemePreference";
+export { ThemeToggle, type ThemeToggleProps } from "./theme/ThemeToggle";
+export { useThemePreference, useResolvedTheme } from "./theme/useThemePreference";
 export type { OmniaTheme, OmniaThemePreference } from "./theme/theme";
 
 /* Foundations */
@@ -10,6 +11,7 @@ export { Button, IconButton, type ButtonProps, type IconButtonProps } from "./fo
 export { buttonClasses, type ButtonVariant, type ButtonSize, type ButtonStyleOptions } from "./foundations/buttonClasses";
 export { Spinner, type SpinnerProps } from "./foundations/Spinner";
 export { TextField, TextArea, type TextFieldProps, type TextAreaProps } from "./foundations/TextField";
+export { CopyField, type CopyFieldProps } from "./foundations/CopyField";
 export {
   Checkbox,
   Switch,

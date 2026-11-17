@@ -150,6 +150,40 @@ export const RedoIcon = createIcon("RedoIcon", <path d="m15 14 5-5-5-5M20 9H9.5a
 export const DownloadIcon = createIcon("DownloadIcon", <path d="M12 4v11M7 10.5l5 5 5-5M5 20h14" />);
 export const UploadIcon = createIcon("UploadIcon", <path d="M12 20V9M7 13.5l5-5 5 5M5 4h14" />);
 
+export const CopyIcon = createIcon(
+  "CopyIcon",
+  <>
+    <rect x="8.5" y="8.5" width="11" height="11" rx="1.5" />
+    <path d="M15.5 8.5V5A1.5 1.5 0 0 0 14 3.5H5A1.5 1.5 0 0 0 3.5 5v9A1.5 1.5 0 0 0 5 15.5h3.5" />
+  </>,
+);
+
+export const ZoomInIcon = createIcon(
+  "ZoomInIcon",
+  <>
+    <circle cx="10.5" cy="10.5" r="6" />
+    <path d="m15 15 4.5 4.5M10.5 8v5M8 10.5h5" />
+  </>,
+);
+
+export const ZoomOutIcon = createIcon(
+  "ZoomOutIcon",
+  <>
+    <circle cx="10.5" cy="10.5" r="6" />
+    <path d="m15 15 4.5 4.5M8 10.5h5" />
+  </>,
+);
+
+export const FitIcon = createIcon(
+  "FitIcon",
+  <path d="M4 9V5h4M15 5h5v4M20 15v4h-4M9 20H5v-4" />,
+);
+
+export const ArrowsIcon = createIcon(
+  "ArrowsIcon",
+  <path d="M4 12h12M12 8l4 4-4 4M8 6 4 12l4 6" />,
+);
+
 export const LinkIcon = createIcon(
   "LinkIcon",
   <path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" />,
@@ -276,6 +310,15 @@ export const CompassIcon = createIcon(
   <>
     <circle cx="12" cy="12" r="9" />
     <path d="m15.5 8.5-2 5-5 2 2-5 5-2Z" />
+  </>,
+);
+
+export const ImageIcon = createIcon(
+  "ImageIcon",
+  <>
+    <rect x="4" y="5" width="16" height="14" rx="2" />
+    <circle cx="9" cy="10" r="1.4" />
+    <path d="m4 16 4.5-4.5 3.5 3.5L15 12l5 5" />
   </>,
 );
 

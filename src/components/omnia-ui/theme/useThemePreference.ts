@@ -4,8 +4,10 @@ import { useCallback, useLayoutEffect, useSyncExternalStore } from "react";
 import {
   applyThemePreference,
   readThemePreference,
+  resolveTheme,
   setThemePreference,
   subscribeToTheme,
+  type OmniaTheme,
   type OmniaThemePreference,
 } from "./theme";
 
@@ -22,4 +24,9 @@ export function useThemePreference() {
   const setPreference = useCallback((next: OmniaThemePreference) => setThemePreference(next), []);
 
   return [preference, setPreference] as const;
+}
+
+/** The theme actually painted: an explicit choice, or the system theme when none is stored. */
+export function useResolvedTheme(): OmniaTheme {
+  return useSyncExternalStore(subscribeToTheme, () => resolveTheme(readThemePreference()), () => "dark");
 }

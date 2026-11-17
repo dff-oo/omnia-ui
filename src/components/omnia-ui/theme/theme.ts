@@ -39,6 +39,17 @@ export function setThemePreference(preference: OmniaThemePreference) {
   window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
 }
 
+/** Drop a stored choice so the page follows the system again. */
+export function clearThemePreference() {
+  try {
+    window.localStorage.removeItem(THEME_STORAGE_KEY);
+  } catch {
+    // See setThemePreference.
+  }
+  applyThemePreference("system");
+  window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
+}
+
 export function subscribeToTheme(onChange: () => void) {
   const media = window.matchMedia(LIGHT_QUERY);
   const handleMedia = () => {

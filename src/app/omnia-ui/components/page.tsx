@@ -48,6 +48,8 @@ import {
   Tabs,
   TextArea,
   TextField,
+  CopyField,
+  ThemeToggle,
   TicketIcon,
 } from "@/components/omnia-ui";
 import { characters } from "@/fixtures/omnia";
@@ -121,6 +123,11 @@ export default function ComponentsPage() {
             <TextField label="Required" required placeholder="Required field" />
             <TextField label="Invalid" defaultValue="!!" error="Use letters and numbers only." />
             <TextField label="Disabled" disabled defaultValue="Locked value" />
+            <CopyField label="Copy field" value="https://example.test/field#f=token" description="Copies the value shown." />
+            <div>
+              <p className={shared.label}>Theme toggle</p>
+              <ThemeToggle />
+            </div>
             <Select
               label="Grouped select"
               placeholder="Choose a slot"

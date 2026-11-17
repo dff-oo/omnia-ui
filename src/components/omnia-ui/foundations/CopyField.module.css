@@ -1,0 +1,8 @@
+.control {
+  padding-inline-end: var(--omnia-space-1);
+}
+
+.value {
+  font-family: var(--omnia-font-mono, ui-monospace, monospace);
+  font-size: var(--omnia-text-small);
+}
