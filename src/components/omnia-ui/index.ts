@@ -132,6 +132,6 @@ export type * from "./compositions/types";
 export * from "./icons";
 
 /* Utilities */
-export { GameIcon, gameIconSrc, type GameIconProps, type GameIconName } from "./game-icons/GameIcon";
+export { GAME_HEX_FRAME, GameIcon, gameIconSrc, type GameIconProps, type GameIconName } from "./game-icons/GameIcon";
 export { cx } from "./lib/cx";
 export { formatNumber, formatCompact } from "./lib/format";

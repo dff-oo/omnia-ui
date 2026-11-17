@@ -68,5 +68,21 @@
     "name": "helmet-green",
     "width": 42,
     "height": 88
+  },
+  {
+    "file": "FieldMap_Hex.g1t.dz",
+    "index": 13,
+    "name": "hex-grid",
+    "trim": false,
+    "width": 256,
+    "height": 256
+  },
+  {
+    "file": "FieldMap_Hex.g1t.dz",
+    "index": 14,
+    "name": "hex-event",
+    "trim": false,
+    "width": 256,
+    "height": 256
   }
 ]

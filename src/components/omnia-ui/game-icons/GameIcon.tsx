@@ -5,6 +5,8 @@ import goal from "./goal.png";
 import helmetGold from "./helmet-gold.png";
 import helmetGreen from "./helmet-green.png";
 import helmetSilver from "./helmet-silver.png";
+import hexEvent from "./hex-event.png";
+import hexGrid from "./hex-grid.png";
 import move from "./move.png";
 import portal from "./portal.png";
 import start from "./start.png";
@@ -21,7 +23,15 @@ const ICONS = {
   "helmet-silver": helmetSilver,
   "helmet-gold": helmetGold,
   "helmet-green": helmetGreen,
+  "hex-grid": hexGrid,
+  "hex-event": hexEvent,
 } satisfies Record<string, StaticImageData>;
+
+/**
+ * Where the hex line sits inside the untrimmed 256 by 256 `hex-grid` and `hex-event`
+ * textures, so a map can stretch that box onto its own cell.
+ */
+export const GAME_HEX_FRAME = { size: 256, left: 38, top: 65, width: 180, height: 126 } as const;
 
 export type GameIconName = keyof typeof ICONS;
 

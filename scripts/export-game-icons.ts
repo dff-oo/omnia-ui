@@ -15,7 +15,8 @@ import { fileURLToPath } from 'node:url';
 
 const PACKAGE_NAME = 'com.square_enix.android_googleplay.DFFOperaOmnian';
 
-const ICONS: { file: string; index: number; name: string }[] = [
+/** `trim: false` keeps the whole texture, for hex frames that callers align by the texture's own geometry. */
+const ICONS: { file: string; index: number; name: string; trim?: false }[] = [
   { file: 'FieldMap_Hex.g1t.dz', index: 8, name: 'cutscene' },
   { file: 'FieldMap_Hex.g1t.dz', index: 22, name: 'battle' },
   { file: 'FieldMap_Hex.g1t.dz', index: 6, name: 'treasure' },
@@ -26,6 +27,8 @@ const ICONS: { file: string; index: number; name: string }[] = [
   { file: 'FieldMap_Hex.g1t.dz', index: 4, name: 'helmet-silver' },
   { file: 'FieldMap_Hex.g1t.dz', index: 2, name: 'helmet-gold' },
   { file: 'FieldMap_Hex.g1t.dz', index: 5, name: 'helmet-green' },
+  { file: 'FieldMap_Hex.g1t.dz', index: 13, name: 'hex-grid', trim: false },
+  { file: 'FieldMap_Hex.g1t.dz', index: 14, name: 'hex-event', trim: false },
 ];
 
 function repoRoot(): string {
@@ -175,7 +178,7 @@ function exportGameIcons(): void {
   const outDir = join(repoRoot(), 'src', 'components', 'omnia-ui', 'game-icons');
   mkdirSync(outDir, { recursive: true });
   const decoded = new Map<string, Buffer>();
-  const manifest: { name: string; file: string; index: number; width: number; height: number }[] = [];
+  const manifest: { name: string; file: string; index: number; trim?: false; width: number; height: number }[] = [];
   for (const icon of ICONS) {
     let g1t = decoded.get(icon.file);
     if (!g1t) {
@@ -184,7 +187,8 @@ function exportGameIcons(): void {
       g1t = unpack(source, icon.file);
       decoded.set(icon.file, g1t);
     }
-    const image = trim(decodeTexture(g1t, icon.index));
+    const decodedTexture = decodeTexture(g1t, icon.index);
+    const image = icon.trim === false ? decodedTexture : trim(decodedTexture);
     writeFileSync(join(outDir, `${icon.name}.png`), encodePng(image.rgba, image.width, image.height));
     manifest.push({ ...icon, width: image.width, height: image.height });
     console.log(`${icon.name} ${image.width}x${image.height}`);
