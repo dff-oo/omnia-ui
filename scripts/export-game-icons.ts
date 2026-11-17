@@ -3,9 +3,8 @@
  * A maintainer runs `npm run game-icons` when the archive is on disk.
  * The PNGs are committed, so CI and other apps never need the archive.
  *
- * FieldMap_Hex.g1t holds one sprite per texture, format 0x36 (16-bit a4b4g4r4),
- * on a cyan key. The silver, gold and green map helmets are not separate
- * textures in that file; this script does not invent them.
+ * FieldMap_Hex.g1t holds one sprite per texture, format 0x36: 16-bit RGBA4444
+ * with red in the high nibble and alpha in the low nibble.
  */
 import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
@@ -77,11 +76,6 @@ function expand(nibble: number): number {
   return nibble * 17;
 }
 
-/** Cyan (0, 255, 255) is the key colour these sprites are drawn on. */
-function isKey(red: number, green: number, blue: number): boolean {
-  return red < 24 && green > 230 && blue > 230;
-}
-
 function decodeTexture(g1t: Buffer, index: number): { rgba: Buffer; width: number; height: number } {
   if (g1t.subarray(0, 4).toString('latin1') !== 'GT1G') throw new Error('not a g1t');
   const table = g1t.readUInt32LE(0x0c);
@@ -97,13 +91,10 @@ function decodeTexture(g1t: Buffer, index: number): { rgba: Buffer; width: numbe
   const rgba = Buffer.alloc(width * height * 4);
   for (let pixel = 0; pixel < width * height; pixel += 1) {
     const packed = data.readUInt16LE(pixel * 2);
-    const red = expand(packed & 0x0f);
-    const green = expand((packed >> 4) & 0x0f);
-    const blue = expand((packed >> 8) & 0x0f);
-    rgba[pixel * 4] = red;
-    rgba[pixel * 4 + 1] = green;
-    rgba[pixel * 4 + 2] = blue;
-    rgba[pixel * 4 + 3] = isKey(red, green, blue) ? 0 : expand((packed >> 12) & 0x0f);
+    rgba[pixel * 4] = expand((packed >> 12) & 0x0f);
+    rgba[pixel * 4 + 1] = expand((packed >> 8) & 0x0f);
+    rgba[pixel * 4 + 2] = expand((packed >> 4) & 0x0f);
+    rgba[pixel * 4 + 3] = expand(packed & 0x0f);
   }
   return { rgba, width, height };
 }

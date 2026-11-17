@@ -18,14 +18,14 @@
     "index": 6,
     "name": "treasure",
     "width": 89,
-    "height": 84
+    "height": 83
   },
   {
     "file": "FieldMap_Hex.g1t.dz",
     "index": 10,
     "name": "move",
-    "width": 120,
-    "height": 113
+    "width": 101,
+    "height": 97
   },
   {
     "file": "FieldMap_Hex.g1t.dz",
@@ -39,13 +39,13 @@
     "index": 33,
     "name": "start",
     "width": 66,
-    "height": 71
+    "height": 72
   },
   {
     "file": "FieldMap_Hex.g1t.dz",
     "index": 34,
     "name": "goal",
     "width": 66,
-    "height": 71
+    "height": 72
   }
 ]
