@@ -23,7 +23,7 @@ import styles from "./_showcase/showcase.module.css";
 
 export const metadata: Metadata = { title: "Overview" };
 
-const markers = ["cutscene", "battle", "treasure", "move", "portal", "start", "goal"] as const satisfies readonly GameIconName[];
+const markers = ["cutscene", "battle", "treasure", "move", "portal", "start", "goal", "helmet-silver", "helmet-gold", "helmet-green"] as const satisfies readonly GameIconName[];
 
 const destinations = [
   {

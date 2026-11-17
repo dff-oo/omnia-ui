@@ -2,12 +2,26 @@ import type { StaticImageData } from "next/image";
 import battle from "./battle.png";
 import cutscene from "./cutscene.png";
 import goal from "./goal.png";
+import helmetGold from "./helmet-gold.png";
+import helmetGreen from "./helmet-green.png";
+import helmetSilver from "./helmet-silver.png";
 import move from "./move.png";
 import portal from "./portal.png";
 import start from "./start.png";
 import treasure from "./treasure.png";
 
-const ICONS = { cutscene, battle, treasure, move, portal, start, goal } satisfies Record<string, StaticImageData>;
+const ICONS = {
+  cutscene,
+  battle,
+  treasure,
+  move,
+  portal,
+  start,
+  goal,
+  "helmet-silver": helmetSilver,
+  "helmet-gold": helmetGold,
+  "helmet-green": helmetGreen,
+} satisfies Record<string, StaticImageData>;
 
 export type GameIconName = keyof typeof ICONS;
 
@@ -24,6 +38,11 @@ function source(image: StaticImageData | string): string {
   return typeof image === "string" ? image : image.src;
 }
 
+/** URL of a sprite, for places an `<img>` can't go, such as an SVG `<image>`. */
+export function gameIconSrc(name: GameIconName): string {
+  return source(ICONS[name]);
+}
+
 /** A sprite taken from the game client. Decorative unless `label` is set. */
 export function GameIcon({ name, size = 24, label, className }: GameIconProps) {
   return (
@@ -31,7 +50,7 @@ export function GameIcon({ name, size = 24, label, className }: GameIconProps) {
     // eslint-disable-next-line @next/next/no-img-element
     <img
       className={className}
-      src={source(ICONS[name])}
+      src={gameIconSrc(name)}
       alt={label ?? ""}
       width={size}
       height={size}

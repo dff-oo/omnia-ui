@@ -47,5 +47,26 @@
     "name": "goal",
     "width": 66,
     "height": 72
+  },
+  {
+    "file": "FieldMap_Hex.g1t.dz",
+    "index": 4,
+    "name": "helmet-silver",
+    "width": 43,
+    "height": 109
+  },
+  {
+    "file": "FieldMap_Hex.g1t.dz",
+    "index": 2,
+    "name": "helmet-gold",
+    "width": 90,
+    "height": 108
+  },
+  {
+    "file": "FieldMap_Hex.g1t.dz",
+    "index": 5,
+    "name": "helmet-green",
+    "width": 42,
+    "height": 88
   }
 ]

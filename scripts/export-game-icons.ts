@@ -23,6 +23,9 @@ const ICONS: { file: string; index: number; name: string }[] = [
   { file: 'FieldMap_Hex.g1t.dz', index: 9, name: 'portal' },
   { file: 'FieldMap_Hex.g1t.dz', index: 33, name: 'start' },
   { file: 'FieldMap_Hex.g1t.dz', index: 34, name: 'goal' },
+  { file: 'FieldMap_Hex.g1t.dz', index: 4, name: 'helmet-silver' },
+  { file: 'FieldMap_Hex.g1t.dz', index: 2, name: 'helmet-gold' },
+  { file: 'FieldMap_Hex.g1t.dz', index: 5, name: 'helmet-green' },
 ];
 
 function repoRoot(): string {
