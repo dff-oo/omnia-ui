@@ -29,9 +29,11 @@ const ICONS = {
 
 /**
  * Where the hex line sits inside the untrimmed 256 by 256 `hex-grid` and `hex-event`
- * textures, so a map can stretch that box onto its own cell.
+ * textures, measured between corner pixel centres, so a map can fit that box to its cell.
+ * The game's cell is irregular: the top edge spans 73 px of the 179 px width, and
+ * cells tile at 126 px per column (half the width plus half the top edge).
  */
-export const GAME_HEX_FRAME = { size: 256, left: 38, top: 65, width: 180, height: 126 } as const;
+export const GAME_HEX_FRAME = { size: 256, left: 38.5, top: 65.5, width: 179, height: 125 } as const;
 
 export type GameIconName = keyof typeof ICONS;
 
