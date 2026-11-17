@@ -4,6 +4,8 @@ import {
   CompassIcon,
   CrystalPanel,
   FeatureAction,
+  GameIcon,
+  type GameIconName,
   GemIcon,
   GridIcon,
   Ornament,
@@ -20,6 +22,8 @@ import { resources } from "@/fixtures/omnia";
 import styles from "./_showcase/showcase.module.css";
 
 export const metadata: Metadata = { title: "Overview" };
+
+const markers = ["cutscene", "battle", "treasure", "move", "portal", "start", "goal"] as const satisfies readonly GameIconName[];
 
 const destinations = [
   {
@@ -77,6 +81,18 @@ export default function OverviewPage() {
         <ResourceCounter label="Summon tickets" value={resources.tickets} max={10} icon={<TicketIcon size={16} />} tone="violet" />
         <StatusBadge status="success">Base UI only</StatusBadge>
       </div>
+
+      <section className={styles.section} aria-labelledby="markers">
+        <SectionHeading id="markers" title="Game icons" description="Sprites from the game client. Square Enix owns them; Omnia does not redraw them." />
+        <div className={styles.row}>
+          {markers.map((name) => (
+            <span key={name} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+              <GameIcon name={name} size={32} />
+              <span style={{ fontSize: 13, textTransform: "capitalize" }}>{name}</span>
+            </span>
+          ))}
+        </div>
+      </section>
 
       <section className={styles.section} aria-labelledby="explore">
         <SectionHeading id="explore" title="Explore the system" />

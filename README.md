@@ -1,7 +1,9 @@
 # Omnia UI
 
-An original, accessible React design system inspired by the mood of Dissidia Final Fantasy Opera Omnia: midnight
-surfaces, cool luminous accents and restrained gold. It contains no game artwork, assets or traced UI.
+An accessible React design system inspired by the mood of Dissidia Final Fantasy Opera Omnia: midnight
+surfaces, cool luminous accents and restrained gold. It is an unofficial fan project. Square Enix owns the game,
+and the handful of sprites in `src/components/omnia-ui/game-icons/` are extracted from the client for interface
+icons. Everything else is original.
 
 Built with Next.js (App Router), React 19, TypeScript, CSS Modules + CSS custom properties, and
 [`@base-ui/react`](https://base-ui.com) as the only component library.

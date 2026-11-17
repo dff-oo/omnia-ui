@@ -15,7 +15,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "next typegen && tsc --noEmit"
+    "typecheck": "next typegen && tsc --noEmit",
+    "game-icons": "tsx scripts/export-game-icons.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0"
@@ -32,8 +33,10 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
     "next": "16.4.6",
+    "oo_tool": "^1.4.2",
     "react": "19.3.0",
     "react-dom": "19.3.0",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

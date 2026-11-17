@@ -1,0 +1,51 @@
+[
+  {
+    "file": "FieldMap_Hex.g1t.dz",
+    "index": 8,
+    "name": "cutscene",
+    "width": 96,
+    "height": 85
+  },
+  {
+    "file": "FieldMap_Hex.g1t.dz",
+    "index": 22,
+    "name": "battle",
+    "width": 89,
+    "height": 116
+  },
+  {
+    "file": "FieldMap_Hex.g1t.dz",
+    "index": 6,
+    "name": "treasure",
+    "width": 89,
+    "height": 84
+  },
+  {
+    "file": "FieldMap_Hex.g1t.dz",
+    "index": 10,
+    "name": "move",
+    "width": 120,
+    "height": 113
+  },
+  {
+    "file": "FieldMap_Hex.g1t.dz",
+    "index": 9,
+    "name": "portal",
+    "width": 128,
+    "height": 97
+  },
+  {
+    "file": "FieldMap_Hex.g1t.dz",
+    "index": 33,
+    "name": "start",
+    "width": 66,
+    "height": 71
+  },
+  {
+    "file": "FieldMap_Hex.g1t.dz",
+    "index": 34,
+    "name": "goal",
+    "width": 66,
+    "height": 71
+  }
+]

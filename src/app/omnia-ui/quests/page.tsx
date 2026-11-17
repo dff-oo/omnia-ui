@@ -4,7 +4,7 @@ import {
   Button,
   buttonClasses,
   CoinIcon,
-  CrystalIcon,
+  GameIcon,
   GemIcon,
   MissionList,
   QuestExplorer,
@@ -56,7 +56,7 @@ export default function QuestsPage() {
           }
           rewards={[
             <RewardTile key="g" name="Gems" icon={<GemIcon size={24} />} quantity={100} state="claimed" />,
-            <RewardTile key="p" name="Power crystal" icon={<CrystalIcon size={24} />} quantity={20} state="claimed" />,
+            <RewardTile key="t" name="Treasure" icon={<GameIcon name="treasure" size={24} />} quantity={1} state="claimed" />,
             <RewardTile key="c" name="Coins" icon={<CoinIcon size={24} />} tone="gold" quantity={5000} state="claimed" />,
           ]}
           actions={

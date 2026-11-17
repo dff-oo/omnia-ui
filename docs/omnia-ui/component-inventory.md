@@ -36,7 +36,8 @@ device, or in Firefox/Safari. There are no automated tests yet.
 | `Toast` | Not implemented | No showcase flow needed one; status messages use `role="status"` regions instead. | — |
 | `Avatar`, `ImageFrame`, `ArtPlaceholder` | Done | Fallbacks, shapes, aspect ratio overridable via `--omnia-image-ratio`. | "No images" toggle in the accessibility playground. |
 | `SegmentedControl` | Done (extra) | Base UI ToggleGroup; `iconOnly` / `"narrow"`. | Theme switcher and roster layout toggle. |
-| Icons | Done | Local SVG, `currentColor`, 20/24 grid, `aria-hidden` unless titled. Includes editor actions (undo, redo, download, upload, link, trash, new file, open folder, sidebar). | Foundations page grid. |
+| Icons | Done | Local SVG, `currentColor`, 20/24 grid, `aria-hidden` unless titled. Includes editor actions (undo, redo, download, upload, link, trash, new file, open folder, sidebar) and zoom, fit, image and copy. | Foundations page grid. |
+| `GameIcon` | Done (extra) | Seven extracted sprites: cutscene, battle, treasure, move, portal, start, goal. Decorative unless `label` is set. | Not yet checked in a browser. |
 
 ## Phase 2 — signature components
 
