@@ -33,6 +33,8 @@ export interface ComboboxProps {
   name?: string;
   required?: boolean;
   disabled?: boolean;
+  /** Focus the input on mount, e.g. as the first field of a dialog. */
+  autoFocus?: boolean;
   className?: string;
 }
 
@@ -55,6 +57,7 @@ export function Combobox({
   name,
   required,
   disabled,
+  autoFocus,
   className,
 }: ComboboxProps) {
   const byValue = useMemo(() => new Map(options.map((option) => [option.value, option])), [options]);
@@ -87,7 +90,7 @@ export function Combobox({
           data-invalid={error ? "" : undefined}
           data-disabled={disabled ? "" : undefined}
         >
-          <BaseCombobox.Input className={fieldStyles.input} placeholder={placeholder} />
+          <BaseCombobox.Input className={fieldStyles.input} placeholder={placeholder} autoFocus={autoFocus} />
           {clearable && (
             <BaseCombobox.Clear
               className={styles.comboButton}
