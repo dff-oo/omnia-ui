@@ -145,6 +145,42 @@ export const SettingsIcon = createIcon(
   </>,
 );
 
+export const UndoIcon = createIcon("UndoIcon", <path d="M9 14 4 9l5-5M4 9h10.5a5.5 5.5 0 0 1 0 11H11" />);
+export const RedoIcon = createIcon("RedoIcon", <path d="m15 14 5-5-5-5M20 9H9.5a5.5 5.5 0 0 0 0 11H13" />);
+export const DownloadIcon = createIcon("DownloadIcon", <path d="M12 4v11M7 10.5l5 5 5-5M5 20h14" />);
+export const UploadIcon = createIcon("UploadIcon", <path d="M12 20V9M7 13.5l5-5 5 5M5 4h14" />);
+
+export const LinkIcon = createIcon(
+  "LinkIcon",
+  <path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" />,
+);
+
+export const TrashIcon = createIcon(
+  "TrashIcon",
+  <path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l.8 12a1.5 1.5 0 0 0 1.5 1.5h6.4a1.5 1.5 0 0 0 1.5-1.5l.8-12M10 11v6M14 11v6" />,
+);
+
+export const FilePlusIcon = createIcon(
+  "FilePlusIcon",
+  <>
+    <path d="M14 3.5H7A1.5 1.5 0 0 0 5.5 5v14A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5V8L14 3.5Z" />
+    <path d="M14 3.5V8h4.5M12 11v6M9 14h6" />
+  </>,
+);
+
+export const FolderOpenIcon = createIcon(
+  "FolderOpenIcon",
+  <path d="M3.5 18.5V6A1.5 1.5 0 0 1 5 4.5h4l2 2.5h7A1.5 1.5 0 0 1 19.5 8.5V10M3.5 18.5 6.3 11a1.5 1.5 0 0 1 1.4-1h12.6a1 1 0 0 1 .9 1.4l-2.6 6.8a1.5 1.5 0 0 1-1.4 1H5a1.5 1.5 0 0 1-1.5-1.5Z" />,
+);
+
+export const SidebarIcon = createIcon(
+  "SidebarIcon",
+  <>
+    <rect x="3.5" y="4.5" width="17" height="15" rx="2" />
+    <path d="M14.5 4.5v15" />
+  </>,
+);
+
 /* Omnia motif icons — original geometry. */
 
 export const CrystalIcon = createIcon(

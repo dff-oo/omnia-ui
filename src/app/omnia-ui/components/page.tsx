@@ -10,6 +10,7 @@ import {
   Callout,
   Card,
   CoinIcon,
+  Combobox,
   CrystalIcon,
   EmptyState,
   EquipmentSlot,
@@ -49,6 +50,7 @@ import {
   TextField,
   TicketIcon,
 } from "@/components/omnia-ui";
+import { characters } from "@/fixtures/omnia";
 import shared from "../_showcase/showcase.module.css";
 import { ChoiceDemo, FormDemo, InteractiveSignatureDemo, LoadingButtonDemo, OverlayDemo } from "../_showcase/demos";
 
@@ -110,7 +112,7 @@ export default function ComponentsPage() {
 
       {/* Fields ----------------------------------------------------------- */}
       <section className={shared.section} aria-labelledby="fields">
-        <SectionHeading id="fields" title="Text fields & Select" />
+        <SectionHeading id="fields" title="Text fields, Select & Combobox" />
         <Panel surface="plain">
           <div className={shared.grid2}>
             <TextField label="Default" placeholder="Type here" />
@@ -129,6 +131,18 @@ export default function ComponentsPage() {
             />
             <Select label="Invalid select" error="Choose a region." options={[{ value: "global", label: "Global" }]} />
             <Select label="Disabled select" disabled defaultValue="global" options={[{ value: "global", label: "Global" }]} />
+            <Combobox
+              label="Combobox"
+              description="Type to filter long lists."
+              placeholder="Search characters"
+              clearable
+              options={characters.map((character) => ({ value: character.id, label: character.name }))}
+            />
+            <Combobox
+              label="Invalid combobox"
+              error="Choose a character."
+              options={characters.map((character) => ({ value: character.id, label: character.name }))}
+            />
             <TextArea label="Text area" description="Resizes vertically." placeholder="Notes" />
           </div>
         </Panel>

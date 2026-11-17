@@ -25,6 +25,7 @@ export {
   type SegmentedOption,
 } from "./foundations/SegmentedControl";
 export { Select, type SelectProps, type SelectOption, type SelectOptionGroup } from "./foundations/Select";
+export { Combobox, type ComboboxProps, type ComboboxOption } from "./foundations/Combobox";
 export {
   Dialog,
   DialogClose,

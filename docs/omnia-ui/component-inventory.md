@@ -22,6 +22,7 @@ device, or in Firefox/Safari. There are no automated tests yet.
 | `TextArea` | Done | Same chrome; `resize="none" \| "vertical"`. | Rendered in the form demo. |
 | `Checkbox`, `Switch`, `RadioGroup` | Done | Base UI; controlled/uncontrolled, disabled, invalid. Descriptions sit outside the label so they don't join the accessible name. | Accessible name/description wiring; required-checkbox error. |
 | `Select` | Done | Base UI; groups, placeholder, disabled options, invalid. | Opened with ArrowDown, choose with Enter, focus returns to trigger. Mouse opening **not** confirmed (the tool's click didn't open it). |
+| `Combobox` | Done (extra) | Base UI Combobox; type to filter, `clearable`, `limit`, empty message, invalid, disabled. | Accessible name and description, filtering ("ri" → 2 matches), choosing an option, clear button appears only with a value and returns focus to the input. Keyboard-only selection **not** tested. |
 | `Dialog`, `AlertDialog` | Done | Title, description, actions, optional close button. | Dialog: open, Escape, focus return. AlertDialog: initial focus on the safe action, close, focus return. |
 | `Tabs` | Done | Base UI; controlled/uncontrolled, disabled tabs. | Click switches panel; panel labelled by tab; disabled tab `aria-disabled`. Arrow-key traversal **not** tested. |
 | `Menu` | Done | Groups, separators, danger items. | Open, choose item, status updated. |
@@ -34,7 +35,7 @@ device, or in Firefox/Safari. There are no automated tests yet.
 | `Toast` | Not implemented | No showcase flow needed one; status messages use `role="status"` regions instead. | — |
 | `Avatar`, `ImageFrame`, `ArtPlaceholder` | Done | Fallbacks, shapes, aspect ratio overridable via `--omnia-image-ratio`. | "No images" toggle in the accessibility playground. |
 | `SegmentedControl` | Done (extra) | Base UI ToggleGroup; `iconOnly` / `"narrow"`. | Theme switcher and roster layout toggle. |
-| Icons | Done | Local SVG, `currentColor`, 20/24 grid, `aria-hidden` unless titled. | Foundations page grid. |
+| Icons | Done | Local SVG, `currentColor`, 20/24 grid, `aria-hidden` unless titled. Includes editor actions (undo, redo, download, upload, link, trash, new file, open folder, sidebar). | Foundations page grid. |
 
 ## Phase 2 — signature components
 

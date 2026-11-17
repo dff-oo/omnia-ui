@@ -162,6 +162,64 @@
   transform: rotate(180deg);
 }
 
+/* Combobox: the input group reuses the field control; these are its inline buttons and popup. */
+.comboControl {
+  padding-inline-end: var(--omnia-space-1);
+  gap: 0;
+}
+
+.comboButton {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--omnia-radius-xs);
+  background: transparent;
+  color: var(--omnia-fg-muted);
+  cursor: pointer;
+}
+
+.comboButton:hover {
+  background: var(--omnia-surface-2);
+  color: var(--omnia-fg);
+}
+
+.comboButton:focus-visible {
+  outline: 2px solid var(--omnia-focus);
+  outline-offset: -2px;
+}
+
+.comboButton:disabled {
+  cursor: not-allowed;
+}
+
+.comboTrigger svg {
+  transition: transform var(--omnia-duration-fast) var(--omnia-ease-out);
+}
+
+.comboTrigger[data-popup-open] svg {
+  transform: rotate(180deg);
+}
+
+.comboPopup {
+  composes: popup;
+  max-height: min(320px, var(--available-height));
+}
+
+.empty {
+  padding: var(--omnia-space-2) var(--omnia-space-3);
+  color: var(--omnia-fg-muted);
+  font-size: var(--omnia-text-small);
+}
+
+.empty:empty {
+  display: none;
+}
+
 /* Popover */
 .popover {
   composes: popup;
