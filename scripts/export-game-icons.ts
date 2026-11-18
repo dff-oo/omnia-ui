@@ -15,13 +15,17 @@ import { fileURLToPath } from 'node:url';
 
 const PACKAGE_NAME = 'com.square_enix.android_googleplay.DFFOperaOmnian';
 
-/** `trim: false` keeps the whole texture, for hex frames that callers align by the texture's own geometry. */
-const ICONS: { file: string; index: number; name: string; trim?: false }[] = [
+/**
+ * `trim: false` keeps the whole texture, for hex frames that callers align by the texture's own geometry.
+ * `over` draws another texture of the same file on top before trimming; the gate's frame and emblem share one canvas.
+ */
+const ICONS: { file: string; index: number; name: string; trim?: false; over?: number }[] = [
   { file: 'FieldMap_Hex.g1t.dz', index: 8, name: 'cutscene' },
   { file: 'FieldMap_Hex.g1t.dz', index: 22, name: 'battle' },
   { file: 'FieldMap_Hex.g1t.dz', index: 6, name: 'treasure' },
   { file: 'FieldMap_Hex.g1t.dz', index: 10, name: 'move' },
   { file: 'FieldMap_Hex.g1t.dz', index: 9, name: 'portal' },
+  { file: 'FieldMap_Hex.g1t.dz', index: 9, over: 10, name: 'gate' },
   { file: 'FieldMap_Hex.g1t.dz', index: 33, name: 'start' },
   { file: 'FieldMap_Hex.g1t.dz', index: 34, name: 'goal' },
   { file: 'FieldMap_Hex.g1t.dz', index: 4, name: 'helmet-silver' },
@@ -111,6 +115,22 @@ function decodeTexture(g1t: Buffer, index: number): { rgba: Buffer; width: numbe
   return { rgba, width, height };
 }
 
+/** Source-over blend of `top` onto `base`; both are the same size. */
+function composite(base: { rgba: Buffer; width: number; height: number }, top: { rgba: Buffer; width: number; height: number }) {
+  if (base.width !== top.width || base.height !== top.height) throw new Error('layers differ in size');
+  const rgba = Buffer.from(base.rgba);
+  for (let at = 0; at < rgba.length; at += 4) {
+    const alpha = top.rgba[at + 3] / 255;
+    const under = rgba[at + 3] / 255;
+    const out = alpha + under * (1 - alpha);
+    for (let channel = 0; channel < 3; channel += 1) {
+      rgba[at + channel] = out === 0 ? 0 : Math.round((top.rgba[at + channel] * alpha + rgba[at + channel] * under * (1 - alpha)) / out);
+    }
+    rgba[at + 3] = Math.round(out * 255);
+  }
+  return { rgba, width: base.width, height: base.height };
+}
+
 function trim(image: { rgba: Buffer; width: number; height: number }): { rgba: Buffer; width: number; height: number } {
   let minX = image.width;
   let minY = image.height;
@@ -193,7 +213,8 @@ function exportGameIcons(): void {
       g1t = unpack(source, icon.file);
       decoded.set(icon.file, g1t);
     }
-    const decodedTexture = decodeTexture(g1t, icon.index);
+    const base = decodeTexture(g1t, icon.index);
+    const decodedTexture = icon.over === undefined ? base : composite(base, decodeTexture(g1t, icon.over));
     const image = icon.trim === false ? decodedTexture : trim(decodedTexture);
     writeFileSync(join(outDir, `${icon.name}.png`), encodePng(image.rgba, image.width, image.height));
     manifest.push({ ...icon, width: image.width, height: image.height });

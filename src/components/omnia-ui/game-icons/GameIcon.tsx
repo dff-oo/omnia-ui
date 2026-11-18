@@ -12,6 +12,7 @@ export const GAME_ICON_NAMES = [
   "treasure",
   "move",
   "portal",
+  "gate",
   "start",
   "goal",
   "helmet-silver",
