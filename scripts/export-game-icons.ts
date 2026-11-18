@@ -1,7 +1,7 @@
 /**
  * Extracts a small set of named icons from the game client archive.
  * A maintainer runs `npm run game-icons` when the archive is on disk.
- * The PNGs go to `icons/` in the dffoogg/cdn checkout, which serves them; `GameIcon` loads them from there.
+ * The PNGs go to `icons/` in the dff-oo/cdn checkout, which serves them; `GameIcon` loads them from there.
  *
  * FieldMap_Hex.g1t holds one sprite per texture, format 0x36: 16-bit RGBA4444
  * with red in the high nibble and alpha in the low nibble.
@@ -41,12 +41,12 @@ function repoRoot(): string {
 }
 
 function archiveRoot(): string {
-  return resolve(process.env.DFFOO_GAME_DIR ?? resolve(repoRoot(), '..', 'dffoogg-game'), 'archive');
+  return resolve(process.env.DFFOO_GAME_DIR ?? resolve(repoRoot(), '..', 'dff-oo-game'), 'archive');
 }
 
-/** The dffoogg/cdn checkout next to this repo. DFFOO_CDN_DIR overrides it. */
+/** The dff-oo/cdn checkout next to this repo. DFFOO_CDN_DIR overrides it. */
 function cdnRoot(): string {
-  return process.env.DFFOO_CDN_DIR ?? resolve(repoRoot(), '..', 'dffoogg-cdn');
+  return process.env.DFFOO_CDN_DIR ?? resolve(repoRoot(), '..', 'dff-oo-cdn');
 }
 
 function unpackerRoot(): string {

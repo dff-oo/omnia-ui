@@ -2,7 +2,7 @@
 
 An accessible React design system inspired by the mood of Dissidia Final Fantasy Opera Omnia: midnight
 surfaces, cool luminous accents and restrained gold. It is an unofficial fan project. Square Enix owns the game,
-and the handful of sprites `GameIcon` loads from [dffoogg/cdn](https://github.com/dffoogg/cdn) are extracted from
+and the handful of sprites `GameIcon` loads from [dff-oo/cdn](https://github.com/dff-oo/cdn) are extracted from
 the client for interface icons. Everything else is original.
 
 Built with Next.js (App Router), React 19, TypeScript, CSS Modules + CSS custom properties, and
@@ -43,26 +43,26 @@ The library ships as TypeScript source and CSS Modules, so the consuming Next.js
 pinned commit:
 
 ```bash
-npm install github:dffoogg/omnia-ui#<commit>
+npm install github:dff-oo/omnia-ui#<commit>
 ```
 
 ```ts
 // next.config.ts
-const nextConfig: NextConfig = { transpilePackages: ["@dffoogg/omnia-ui"] };
+const nextConfig: NextConfig = { transpilePackages: ["@dff-oo/omnia-ui"] };
 ```
 
 Everything is exported from one barrel (inside this repo, `@/components/omnia-ui` is the same barrel):
 
 ```tsx
-import { Button, Panel, PortraitCard, ThemeSwitcher } from "@dffoogg/omnia-ui";
+import { Button, Panel, PortraitCard, ThemeSwitcher } from "@dff-oo/omnia-ui";
 ```
 
 Theme setup in the root layout (see `src/app/layout.tsx`):
 
 ```tsx
-import "@dffoogg/omnia-ui/tokens.css";
-import "@dffoogg/omnia-ui/globals.css";
-import { ThemeScript, TooltipProvider } from "@dffoogg/omnia-ui";
+import "@dff-oo/omnia-ui/tokens.css";
+import "@dff-oo/omnia-ui/globals.css";
+import { ThemeScript, TooltipProvider } from "@dff-oo/omnia-ui";
 
 <html lang="en" data-omnia-theme="dark" suppressHydrationWarning>
   <head><ThemeScript /></head>

@@ -1,5 +1,5 @@
-/** Where extracted game images are served. `NEXT_PUBLIC_DFFOO_CDN` points at another copy of the dffoogg/cdn repo. */
-export const GAME_CDN_URL = process.env.NEXT_PUBLIC_DFFOO_CDN ?? "https://dffoogg.github.io/cdn";
+/** Where extracted game images are served. `NEXT_PUBLIC_DFFOO_CDN` points at another copy of the dff-oo/cdn repo. */
+export const GAME_CDN_URL = process.env.NEXT_PUBLIC_DFFOO_CDN ?? "https://dff-oo.github.io/cdn";
 
 /** URL of a file in the CDN, such as `characters/8.png` or `maps/001.png`. */
 export function gameCdnSrc(path: string): string {
